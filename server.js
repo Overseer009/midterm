@@ -46,11 +46,11 @@ const miscRoutes = require("./routes/misc");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(dbHelpers));
-app.use("/api/books", booksRoutes(dbhelpers));
-app.use("/api/movies", moviesRoutes(dbhelpers));
-app.use("/api/restaurants", restaurantsRoutes(dbhelpers));
-app.use("/api/products", productsRoutes(dbhelpers));
-app.use("/api/misc", miscRoutes(dbhelpers));
+app.use("/api/books", booksRoutes(dbHelpers));
+app.use("/api/movies", moviesRoutes(dbHelpers));
+app.use("/api/restaurants", restaurantsRoutes(dbHelpers));
+app.use("/api/products", productsRoutes(dbHelpers));
+app.use("/api/misc", miscRoutes(dbHelpers));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
