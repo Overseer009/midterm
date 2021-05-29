@@ -6,7 +6,7 @@ $(document).ready(function () {
         url: "/api/users",
     }).done((users) => {
       for (user of users) {
-      $("<div>").text(user.username).appendTo($("body"));
+      $("<div>").text(user.username).appendTo($("#users"));
       }
     });
   }
@@ -17,7 +17,7 @@ $(document).ready(function () {
         url: "/api/books",
     }).done((books) => {
       for (book of books) {
-      $("<div>").text(book.name).appendTo($("body"));
+      $("<div>").text(book.name).appendTo($("#books"));
       }
     });
   }
@@ -28,7 +28,7 @@ $(document).ready(function () {
         url: "/api/movies",
     }).done((movies) => {
       for (movie of movies) {
-      $("<div>").text(movie.name).appendTo($("body"));
+      $("<div>").text(movie.name).appendTo($("#movies"));
       }
     });
   }
@@ -39,7 +39,7 @@ $(document).ready(function () {
         url: "/api/restaurants",
     }).done((restaurants) => {
       for (restaurant of restaurants) {
-      $("<div>").text(restaurant.name).appendTo($("body"));
+      $("<div>").text(restaurant.name).appendTo($("#restaurants"));
       }
     });
   }
@@ -50,7 +50,7 @@ $(document).ready(function () {
         url: "/api/products",
     }).done((products) => {
       for (product of products) {
-      $("<div>").text(product.name).appendTo($("body"));
+      $("<div>").text(product.name).appendTo($("#products"));
       }
     });
   }
@@ -61,7 +61,7 @@ $(document).ready(function () {
         url: "/api/misc",
     }).done((misc) => {
       for (m of misc) {
-      $("<div>").text(m.name).appendTo($("body"));
+      $("<div>").text(m.name).appendTo($("#misc"));
       }
     });
   }

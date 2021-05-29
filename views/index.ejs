@@ -4,15 +4,54 @@
   <head>
     <title>Home Page</title>
 
+    <!--CSS and SCSS-->
     <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
     <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/layout.scss" type="text/scss" />
 
+
+    <!--jQuery-->
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+
+    <!--AJAX Requests-->
     <script type="text/javascript" src="/scripts/app.js"></script>
+
   </head>
 
   <body>
-    <h1>Hello World!</h1>
+    <!-- Top nav bar -->
+    <nav>
+
+        <div class="logo toggle">
+          <button type="button">LOGO HERE</button>
+        </div>
+
+      <div class="input-group">
+        <span class="appName">WADDAYAWANNADO?</span>
+        <textarea class="form-control" aria-label="With textarea" placeholder="What do you wanna do?"></textarea>
+        <button type="button" class="btn btn-primary">Add</button>
+      </div>
+
+      <div class="listIcons">
+        <button type="button" class="movies button">To Watch</button>
+        <button type="button" class="restaurants button">To Eat</button>
+        <button type="button" class="books button">To Read</button>
+        <button type="button" class="products button">To Buy</button>
+       <button type="button" class="misc button">Miscellaneous</button>
+      </div>
+
+    </nav>
+
+    <!-- Page-specific (main) content here -->
+    <div class="lists">
+      <div id="users"></div>
+      <div id="books"></div>
+      <div id="movies"></div>
+      <div id="restaurants"></div>
+      <div id="products"></div>
+      <div id="misc"></div>
+    </div>
   </body>
+
 </html>
