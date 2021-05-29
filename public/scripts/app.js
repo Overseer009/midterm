@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+//------Database Read AJAX Requests------//
+
   const loadUsers = () => {
     $.ajax({
         method: "GET",
@@ -65,6 +67,30 @@ $(document).ready(function () {
       }
     });
   }
+
+//------Nav Bar Button Toggles------//
+
+$(".books").click(function() {
+  $("#books").slideToggle("slow");
+});
+
+$(".movies").click(function() {
+  $("#movies").slideToggle("slow");
+});
+
+$(".restaurants").click(function() {
+  $("#restaurants").slideToggle("slow");
+});
+
+$(".products").click(function() {
+  $("#products").slideToggle("slow");
+});
+
+$(".misc").click(function() {
+  $("#misc").slideToggle("slow");
+});
+
+//------AJAX Function Calls-----//
 
   loadUsers();
   loadBooks();

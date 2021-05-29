@@ -19,8 +19,6 @@ nav {
 
 .input-group {
   display: inherit;
-  flex-direction: column;
-    
   width: 45%;
 }
 
@@ -29,9 +27,14 @@ nav {
   justify-content: center;
 }
 
+.textSubmit {
+  display: flex;
+
+}
+
 .listIcons {
   display: inherit;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
 }
 
@@ -39,6 +42,31 @@ nav {
   display: flex;
   justify-content: space-between;
   margin-top: 100px;
+}
+
+#books {
+  display: none;
+  border: 3px solid black;
+}
+
+#movies {
+  display: none;
+  border: 3px solid black;
+}
+
+#restaurants {
+  display: none;
+  border: 3px solid black;
+}
+
+#products {
+  display: none;
+  border: 3px solid black;
+}
+
+#misc {
+  display: none;
+  border: 3px solid black;
 }
 
 

@@ -29,14 +29,20 @@
 
       <div class="input-group">
         <span class="appName">WADDAYAWANNADO?</span>
-        <textarea class="form-control" aria-label="With textarea" placeholder="What do you wanna do?"></textarea>
-        <button type="button" class="btn btn-primary">Add</button>
+        <div class="textSubmit">
+          <textarea class="form-control" aria-label="With textarea" placeholder="What do you wanna do?"></textarea>
+          <button type="button" class="btn btn-primary">Add</button>
+        </div>
       </div>
 
       <div class="listIcons">
         <button type="button" class="movies button">To Watch</button>
         <button type="button" class="restaurants button">To Eat</button>
-        <button type="button" class="books button">To Read</button>
+        <div>
+          <button type="button" class="books button">To Read</button>
+          <div id="books"></div>
+        </div>
+
         <button type="button" class="products button">To Buy</button>
        <button type="button" class="misc button">Miscellaneous</button>
       </div>
@@ -46,7 +52,7 @@
     <!-- Page-specific (main) content here -->
     <div class="lists">
       <div id="users"></div>
-      <div id="books"></div>
+
       <div id="movies"></div>
       <div id="restaurants"></div>
       <div id="products"></div>
