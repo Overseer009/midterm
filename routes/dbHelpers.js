@@ -29,5 +29,23 @@ module.exports = (db) => {
       });
   };
 
-  return { getUsers, getBooksForUser };
+  const getMoviesForUser = () => {
+    const stringQuery = `
+      SELECT * FROM movies
+      JOIN users ON users.id = user_id
+      WHERE users.id = $1;`;
+    const id = [req.params.id];
+
+    return db
+      .query(stringQuery, id)
+      .then((data) => {
+        const movies = data.rows;
+        res.json({ movies });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+      });
+  };
+
+  return { getUsers, getBooksForUser, getMoviesForUser };
 };

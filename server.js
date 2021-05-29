@@ -39,10 +39,12 @@ app.use(express.static("public"));
 // Note: Feel free to replace the example routes below with your own
 const usersRoutes = require("./routes/users");
 const booksRoutes = require("./routes/books");
+const moviesRoutes = require("./routes/movies");
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(dbHelpers));
 app.use("/api/books", booksRoutes(dbhelpers));
+app.use("/api/movies", booksRoutes(dbhelpers));
 // Note: mount other resources here, using the same pattern above
 
 // Home page
