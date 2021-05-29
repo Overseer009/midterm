@@ -8,18 +8,11 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (db) => {
+module.exports = (dbHelpers) => {
   router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
+    dbHelpers.getUsers()
+    .then((users) => res.json(users))
+    .catch((error) => res.json(error))
   });
   return router;
 };
