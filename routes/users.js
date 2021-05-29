@@ -5,14 +5,15 @@
  * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
  */
 
-const express = require('express');
-const router  = express.Router();
+const express = require("express");
+const router = express.Router();
 
 module.exports = (dbHelpers) => {
   router.get("/", (req, res) => {
-    dbHelpers.getUsers()
-    .then((users) => res.json(users))
-    .catch((error) => res.json(error))
+    dbHelpers
+      .getUsers()
+      .then((users) => res.json(users))
+      .catch((error) => res.json(error));
   });
   return router;
 };
