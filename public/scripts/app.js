@@ -4,8 +4,10 @@ $(document).ready(function () {
         method: "GET",
         url: "/api/users",
     }).done((users) => {
+      console.log("users:", users);
       for (user of users) {
-      $("<div>").text(user.name).appendTo($("body"));
+        console.log("single:", user);
+      $("<div>").text(user.username).appendTo($("body"));
       }
     });
   }
