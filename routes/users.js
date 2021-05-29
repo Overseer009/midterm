@@ -10,10 +10,18 @@ const router = express.Router();
 
 module.exports = (dbHelpers) => {
   router.get("/", (req, res) => {
+    console.log("HELLO");
+    console.log("res:", res);
     dbHelpers
       .getUsers()
-      .then((users) => res.json(users))
-      .catch((error) => res.json(error));
+      .then((users) => {
+        console.log("users:", users);
+        res.json(users);
+      })
+      .catch((error) => {
+        console.log("error:", error.message);
+        return res.json(error)
+      });
   });
   return router;
 };

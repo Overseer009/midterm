@@ -3,14 +3,10 @@ module.exports = (db) => {
   const getUsers = () => {
     return db
       .query(`SELECT * FROM users;`)
-      .then((data) => {
-        const users = data.rows;
-        res.json({ users });
-      })
-      .catch((error) => {
-        res.status(500).json({ error: error.message });
-      });
+      .then((data) => data.rows)
+      .catch((error) => error.message)
   };
+
   //--------------------------------------------------------------
   const getBooksForUser = () => {
     const stringQuery = `
@@ -21,13 +17,8 @@ module.exports = (db) => {
 
     return db
       .query(stringQuery, id)
-      .then((data) => {
-        const books = data.rows;
-        res.json({ books });
-      })
-      .catch((error) => {
-        res.status(500).json({ error: error.message });
-      });
+      .then((data) => data.rows)
+      .catch((error) => error.message);
   };
   //------------------------------------------------------------
   const getMoviesForUser = () => {
@@ -39,13 +30,8 @@ module.exports = (db) => {
 
     return db
       .query(stringQuery, id)
-      .then((data) => {
-        const movies = data.rows;
-        res.json({ movies });
-      })
-      .catch((error) => {
-        res.status(500).json({ error: error.message });
-      });
+      .then((data) => data.rows)
+      .catch((error) => error.message);
   };
   //------------------------------------------------------------
   const getRestaurantsForUser = () => {
@@ -57,13 +43,8 @@ module.exports = (db) => {
 
     return db
       .query(stringQuery, id)
-      .then((data) => {
-        const restaurants = data.rows;
-        res.json({ restaurants });
-      })
-      .catch((error) => {
-        res.status(500).json({ error: error.message });
-      });
+      .then((data) => data.rows)
+      .catch((error) => error.message);
   };
   //------------------------------------------------------------
 
@@ -76,13 +57,8 @@ module.exports = (db) => {
 
     return db
       .query(stringQuery, id)
-      .then((data) => {
-        const products = data.rows;
-        res.json({ products });
-      })
-      .catch((error) => {
-        res.status(500).json({ error: error.message });
-      });
+      .then((data) => data.rows)
+      .catch((error) => error.message);
   };
   //------------------------------------------------------------
 
@@ -95,13 +71,8 @@ module.exports = (db) => {
 
     return db
       .query(stringQuery, id)
-      .then((data) => {
-        const misc = data.rows;
-        res.json({ misc });
-      })
-      .catch((error) => {
-        res.status(500).json({ error: error.message });
-      });
+      .then((data) => data.rows)
+      .catch((error) => error.message);
   };
   //------------------------------------------------------------
 
