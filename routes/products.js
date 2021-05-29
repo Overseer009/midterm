@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (dbHelpers) => {
   router.get("/", (req, res) => {
     dbHelpers
-      .getProducts()
+      .getProductsForUser()
       .then((products) => res.json(products))
       .catch((error) => res.json(error));
   });

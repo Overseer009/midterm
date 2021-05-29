@@ -4,7 +4,7 @@ const router = express.Router();
 module.exports = (dbHelpers) => {
   router.get("/", (req, res) => {
     dbHelpers
-      .getMisc()
+      .getMiscForUser()
       .then((misc) => res.json(misc))
       .catch((error) => res.json(error));
   });
