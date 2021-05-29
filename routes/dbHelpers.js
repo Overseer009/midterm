@@ -1,4 +1,5 @@
 module.exports = (db) => {
+  //--------------------------------------------------------------
   const getUsers = () => {
     return db
       .query(`SELECT * FROM users;`)
@@ -10,7 +11,7 @@ module.exports = (db) => {
         res.status(500).json({ error: error.message });
       });
   };
-
+  //--------------------------------------------------------------
   const getBooksForUser = () => {
     const stringQuery = `
       SELECT * FROM books
@@ -28,7 +29,7 @@ module.exports = (db) => {
         res.status(500).json({ error: error.message });
       });
   };
-
+  //------------------------------------------------------------
   const getMoviesForUser = () => {
     const stringQuery = `
       SELECT * FROM movies
@@ -46,6 +47,70 @@ module.exports = (db) => {
         res.status(500).json({ error: error.message });
       });
   };
+  //------------------------------------------------------------
+  const getRestaurantsForUser = () => {
+    const stringQuery = `
+      SELECT * FROM restaurants
+      JOIN users ON users.id = user_id
+      WHERE users.id = $1;`;
+    const id = [req.params.id];
 
-  return { getUsers, getBooksForUser, getMoviesForUser };
+    return db
+      .query(stringQuery, id)
+      .then((data) => {
+        const restaurants = data.rows;
+        res.json({ restaurants });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+      });
+  };
+  //------------------------------------------------------------
+
+  const getProductsForUser = () => {
+    const stringQuery = `
+      SELECT * FROM products
+      JOIN users ON users.id = user_id
+      WHERE users.id = $1;`;
+    const id = [req.params.id];
+
+    return db
+      .query(stringQuery, id)
+      .then((data) => {
+        const products = data.rows;
+        res.json({ products });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+      });
+  };
+  //------------------------------------------------------------
+
+  const getMiscForUser = () => {
+    const stringQuery = `
+      SELECT * FROM misc
+      JOIN users ON users.id = user_id
+      WHERE users.id = $1;`;
+    const id = [req.params.id];
+
+    return db
+      .query(stringQuery, id)
+      .then((data) => {
+        const misc = data.rows;
+        res.json({ misc });
+      })
+      .catch((error) => {
+        res.status(500).json({ error: error.message });
+      });
+  };
+  //------------------------------------------------------------
+
+  return {
+    getUsers,
+    getBooksForUser,
+    getMoviesForUser,
+    getRestaurantsForUser,
+    getProductsForUser,
+    getMiscForUser
+  };
 };
