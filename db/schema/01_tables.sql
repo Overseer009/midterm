@@ -45,5 +45,3 @@ CREATE TABLE users (
    user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
    name VARCHAR(255) NOT NULL
  );
-
-
