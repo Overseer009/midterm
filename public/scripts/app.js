@@ -8,7 +8,7 @@ $(document).ready(function () {
         url: "/api/users",
     }).done((users) => {
       for (user of users) {
-      $("<div>").text(user.username).appendTo($(".users"));
+      $("<a>").text(user.username).appendTo($(".users"));
       }
     });
   }
@@ -30,7 +30,7 @@ $(document).ready(function () {
         url: "/api/movies",
     }).done((movies) => {
       for (movie of movies) {
-      $("<div>").text(movie.name).appendTo($(".toWatch"));
+      $("<a>").text(movie.name).appendTo($(".toWatch"));
       }
     });
   }
@@ -41,7 +41,7 @@ $(document).ready(function () {
         url: "/api/restaurants",
     }).done((restaurants) => {
       for (restaurant of restaurants) {
-      $("<div>").text(restaurant.name).appendTo($(".toEat"));
+      $("<a>").text(restaurant.name).appendTo($(".toEat"));
       }
     });
   }
@@ -52,7 +52,7 @@ $(document).ready(function () {
         url: "/api/products",
     }).done((products) => {
       for (product of products) {
-      $("<div>").text(product.name).appendTo($(".toBuy"));
+      $("<a>").text(product.name).appendTo($(".toBuy"));
       }
     });
   }
@@ -63,7 +63,7 @@ $(document).ready(function () {
         url: "/api/misc",
     }).done((misc) => {
       for (m of misc) {
-      $("<div>").text(m.name).appendTo($(".other"));
+      $("<a>").text(m.name).appendTo($(".other"));
       }
     });
   }
