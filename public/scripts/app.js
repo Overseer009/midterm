@@ -96,22 +96,48 @@ $(document).ready(function() {
 
   //------API Routes-----//
 
-  //------Google Books API GET-----//
-
   $("#input").click(function() {
-    const endpoint = 'https://www.googleapis.com/books/v1/volumes?q='
-    const key = '&key=AIzaSyB4Q5zFQ0mwyehCcTLfGafcu9VRY7_Jfq0'
-    const userInput = $(".userText").val()
-    $(".userText").val("");
+
+    //------Endpoints/Keys-----//
+    const endpointBooks = 'https://www.googleapis.com/books/v1/volumes?q='
+    const keyBooks = '&key=AIzaSyB4Q5zFQ0mwyehCcTLfGafcu9VRY7_Jfq0'
+    const keyMovies = 'ac4024b3'
+    const endpointMovies = `http://www.omdbapi.com/?apikey=${keyMovies}&t=`
+
+
+
+    const userInput = $(".userText")
+      .val()
+      .trim()
+      .replace(/\s/g, '+')
+
+
+
+    // console.log(endpointMovies + userInput);
+    // console.log(endpointBooks + userInput + keyBooks);
+
+    //------Google Books API GET-----//
 
     $.ajax({
       method: "GET",
-      url: endpoint + userInput + key,
+      url: endpointBooks + userInput + keyBooks,
       dataType: "JSON"
     })
       .then((response) => {
         console.log(response.items)
         console.log(response.items[0].volumeInfo.title)
+      })
+      .catch((error) => error.msg)
+
+    //------Open Movie Database API GET-----//
+
+    $.ajax({
+      method: "GET",
+      url: endpointMovies + userInput,
+      dataType: "JSON"
+    })
+      .then((response) => {
+        console.log(response); //.Title to access the title object
       })
       .catch((error) => error.msg)
   });
