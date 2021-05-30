@@ -35,7 +35,6 @@ nav {
 .listIcons {
   display: inherit;
   justify-content: space-evenly;
-
 }
 
 .lists {
@@ -44,29 +43,80 @@ nav {
   margin-top: 100px;
 }
 
-#books {
-  display: none;
-  border: 3px solid black;
+// #books {
+//   display: none;
+//   border: 3px solid black;
+// }
+
+// #movies {
+//   display: none;
+//   border: 3px solid black;
+// }
+
+// #restaurants {
+//   display: none;
+//   border: 3px solid black;
+// }
+
+// #products {
+//   display: none;
+//   border: 3px solid black;
+// }
+
+// #misc {
+//   display: none;
+//   border: 3px solid black;
+// }
+
+
+
+
+
+
+/* The dropdown container */
+.dropdown {
+  float: center;
+  overflow: hidden;
 }
 
-#movies {
-  display: none;
-  border: 3px solid black;
+/* Dropdown button */
+.dropdown .button {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
 }
 
-#restaurants {
-  display: none;
-  border: 3px solid black;
+/* Add a red background color to navbar links on hover */
+.dropdown:hover .button {
+  background-color: red;
 }
 
-#products {
+/* Dropdown content (hidden by default) */
+.content {
   display: none;
-  border: 3px solid black;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-#misc {
-  display: none;
-  border: 3px solid black;
+/* Links inside the dropdown */
+.content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
 }
 
-
+/* Add a grey background color to dropdown links on hover */
+.content a:hover {
+  background-color: #ddd;
+}

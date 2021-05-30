@@ -8,7 +8,7 @@ $(document).ready(function () {
         url: "/api/users",
     }).done((users) => {
       for (user of users) {
-      $("<div>").text(user.username).appendTo($("#users"));
+      $("<div>").text(user.username).appendTo($(".users"));
       }
     });
   }
@@ -19,7 +19,7 @@ $(document).ready(function () {
         url: "/api/books",
     }).done((books) => {
       for (book of books) {
-      $("<div>").text(book.name).appendTo($("#books"));
+      $("<a>").text(book.name).appendTo($(".toRead"));
       }
     });
   }
@@ -30,7 +30,7 @@ $(document).ready(function () {
         url: "/api/movies",
     }).done((movies) => {
       for (movie of movies) {
-      $("<div>").text(movie.name).appendTo($("#movies"));
+      $("<div>").text(movie.name).appendTo($(".toWatch"));
       }
     });
   }
@@ -41,7 +41,7 @@ $(document).ready(function () {
         url: "/api/restaurants",
     }).done((restaurants) => {
       for (restaurant of restaurants) {
-      $("<div>").text(restaurant.name).appendTo($("#restaurants"));
+      $("<div>").text(restaurant.name).appendTo($(".toEat"));
       }
     });
   }
@@ -52,7 +52,7 @@ $(document).ready(function () {
         url: "/api/products",
     }).done((products) => {
       for (product of products) {
-      $("<div>").text(product.name).appendTo($("#products"));
+      $("<div>").text(product.name).appendTo($(".toBuy"));
       }
     });
   }
@@ -63,7 +63,7 @@ $(document).ready(function () {
         url: "/api/misc",
     }).done((misc) => {
       for (m of misc) {
-      $("<div>").text(m.name).appendTo($("#misc"));
+      $("<div>").text(m.name).appendTo($(".other"));
       }
     });
   }
@@ -71,23 +71,27 @@ $(document).ready(function () {
 //------Nav Bar Button Toggles------//
 
 $(".books").click(function() {
-  $("#books").slideToggle("slow");
+  $(".toRead").slideToggle("slow");
 });
 
 $(".movies").click(function() {
-  $("#movies").slideToggle("slow");
+  $(".toWatch").slideToggle("slow");
 });
 
 $(".restaurants").click(function() {
-  $("#restaurants").slideToggle("slow");
+  $(".toEat").slideToggle("slow");
 });
 
 $(".products").click(function() {
-  $("#products").slideToggle("slow");
+  $(".toBuy").slideToggle("slow");
 });
 
 $(".misc").click(function() {
-  $("#misc").slideToggle("slow");
+  $(".other").slideToggle("slow");
+});
+
+$(".dropbtn").click(function() {
+  $(".dropdown-content").slideToggle("slow");
 });
 
 //------AJAX Function Calls-----//
@@ -99,3 +103,4 @@ $(".misc").click(function() {
   loadProducts();
   loadMisc();
 });
+
