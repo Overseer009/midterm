@@ -99,20 +99,31 @@ $(document).ready(function() {
   $("#input").click(function() {
 
     //------Endpoints/Keys-----//
-    const endpointBooks = 'https://www.googleapis.com/books/v1/volumes?q='
-    const keyBooks = '&key=AIzaSyB4Q5zFQ0mwyehCcTLfGafcu9VRY7_Jfq0'
-    const keyMovies = 'ac4024b3'
-    const endpointMovies = `http://www.omdbapi.com/?apikey=${keyMovies}&t=`
-
-
-
     const userInput = $(".userText")
       .val()
       .trim()
       .replace(/\s/g, '+')
 
+    const userInput2 = $(".userText")
+      .val()
+      .trim()
+      .replace(/\s/g, '%20')
+
+    const keyBooks = '&key=AIzaSyB4Q5zFQ0mwyehCcTLfGafcu9VRY7_Jfq0'
+    const keyMovies = 'ac4024b3'
+    const keyRestaurants = '&key=AIzaSyDEopJDXd9dieKX6y_kb6nUgq61qeBuBNY'
+
+    const endpointBooks = 'https://www.googleapis.com/books/v1/volumes?q='
+    const endpointMovies = `http://www.omdbapi.com/?apikey=${keyMovies}&t=`
+    const endpointRestaurants = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${userInput2}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry`//term //location
 
 
+
+
+    //going to be coming in from the db users table.
+    // const city = "&city=montreal"
+
+    console.log(endpointRestaurants + keyRestaurants);
     // console.log(endpointMovies + userInput);
     // console.log(endpointBooks + userInput + keyBooks);
 
@@ -138,6 +149,18 @@ $(document).ready(function() {
     })
       .then((response) => {
         console.log(response); //.Title to access the title object
+      })
+      .catch((error) => error.msg)
+
+    //------YELP Restaurants API GET-----//
+
+    $.ajax({
+      method: "GET",
+      url: endpointRestaurants + keyRestaurants,
+      dataType: "JSON",
+    })
+      .then((response) => {
+        console.log(response);
       })
       .catch((error) => error.msg)
   });
