@@ -1,12 +1,5 @@
 // See: https://sass-lang.com/
 
-body {
-  background-color: #EEE;
-
-  h1 {
-    color: #244751;
-  }
-}
 
 nav {
   display: flex;
@@ -37,6 +30,10 @@ nav {
   justify-content: space-evenly;
 }
 
+.icon {
+  font-size: 30px;
+}
+
 .lists {
   display: flex;
   justify-content: space-between;
@@ -44,7 +41,7 @@ nav {
 }
 
 .dropdown {
-  float: center;
+  float: right;
   overflow: hidden;
 }
 
