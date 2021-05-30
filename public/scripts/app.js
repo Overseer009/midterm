@@ -96,11 +96,24 @@ $(document).ready(function() {
 
   //------API Routes-----//
 
-  $(".inputbutton").submit(function(event) {
-    event.preventDefault();
+  $("#input").click(function() {
+    const endpoint = 'https://www.googleapis.com/books/v1/volumes?q='
+    const key = '&key=AIzaSyB4Q5zFQ0mwyehCcTLfGafcu9VRY7_Jfq0'
     const userInput = $(".userText").val()
+    $(".userText").val("");
+
+    $.ajax({
+      method: "GET",
+      url: endpoint + userInput + key,
+      dataType: "JSON"
+    })
+      .then((response) => {
+        // const title = kind.items[0].volumeInfo.title;
+        console.log(response.items[0].volumeInfo.title)
+      })
+
     console.log(userInput);
-  })
+  });
 
 
   //------AJAX Function Calls-----//

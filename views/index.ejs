@@ -1,81 +1,84 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Home Page</title>
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<head>
+  <title>Home Page</title>
 
-    <!--CSS and SCSS-->
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="../styles/layout.scss" type="text/scss" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
-    <!--jQuery-->
-    <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
-
-    <!--AJAX Requests-->
-    <script type="text/javascript" src="/scripts/app.js"></script>
+  <!--CSS and SCSS-->
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="../styles/layout.scss" type="text/scss" />
 
 
-  </head>
+  <!--jQuery-->
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
-  <body>
-    <!-- Top nav bar -->
-    <nav>
-
-        <div class="logo toggle">
-          <button type="button">LOGO HERE</button>
-        </div>
-
-      <div class="input-group">
-        <span class="appName">WADDAYAWANNADO?</span>
-        <div class="textSubmit">
-          <textarea class="form-control" aria-label="With textarea" placeholder="What do you wanna do?"></textarea>
-          <button type="button" class="btn btn-primary">Add</button>
-        </div>
-      </div>
-
-      <div class="listIcons">
-        <div class="dropdown">
-          <button type="button" class="movies button"><i class="fas fa-film icon"></i></button>
-          <div class="toWatch content"></div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button" class="restaurants button"><i class="fas fa-utensils icon"></i></button>
-          <div class="toEat content"></div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button" class="books button"><i class="fas fa-book icon"></i></button>
-          <div class="toRead content"></div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button" class="products button"><i class="fas fa-shopping-cart icon"></i></button>
-          <div class="toBuy content"></div>
-        </div>
-
-        <div class="dropdown">
-          <button type="button" class="misc button"><i class="fas fa-tags icon"></i></button>
-          <div class="other content"></div>
-        </div>
-      </div>
-
-    </nav>
+  <!--AJAX Requests-->
+  <script type="text/javascript" src="/scripts/app.js"></script>
 
 
+</head>
 
-    <!-- Page-specific (main) content here -->
-    <div class="lists">
-      <div class="users"></div>
+<body>
+  <!-- Top nav bar -->
+  <nav>
 
+    <div class="logo toggle">
+      <button type="button">LOGO HERE</button>
     </div>
 
-  </body>
+    <div class="input-group">
+      <span class="appName">WADDAYAWANNADO?</span>
+      <div class="textSubmit">
+        <textarea class="form-control userText" aria-label="With textarea"
+          placeholder="What do you wanna do?"></textarea>
+        <button type="button" id="input">Add</button>
+      </div>
+    </div>
+
+    <div class="listIcons">
+      <div class="dropdown">
+        <button type="button" class="movies button"><i class="fas fa-film icon"></i></button>
+        <div class="toWatch content"></div>
+      </div>
+
+      <div class="dropdown">
+        <button type="button" class="restaurants button"><i class="fas fa-utensils icon"></i></button>
+        <div class="toEat content"></div>
+      </div>
+
+      <div class="dropdown">
+        <button type="button" class="books button"><i class="fas fa-book icon"></i></button>
+        <div class="toRead content"></div>
+      </div>
+
+      <div class="dropdown">
+        <button type="button" class="products button"><i class="fas fa-shopping-cart icon"></i></button>
+        <div class="toBuy content"></div>
+      </div>
+
+      <div class="dropdown">
+        <button type="button" class="misc button"><i class="fas fa-tags icon"></i></button>
+        <div class="other content"></div>
+      </div>
+    </div>
+
+  </nav>
+
+
+
+  <!-- Page-specific (main) content here -->
+  <div class="lists">
+    <div class="users"></div>
+
+  </div>
+
+</body>
 
 </html>
