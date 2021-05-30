@@ -96,6 +96,8 @@ $(document).ready(function() {
 
   //------API Routes-----//
 
+  //------Google Books API GET-----//
+
   $("#input").click(function() {
     const endpoint = 'https://www.googleapis.com/books/v1/volumes?q='
     const key = '&key=AIzaSyB4Q5zFQ0mwyehCcTLfGafcu9VRY7_Jfq0'
@@ -108,11 +110,10 @@ $(document).ready(function() {
       dataType: "JSON"
     })
       .then((response) => {
-        // const title = kind.items[0].volumeInfo.title;
+        console.log(response.items)
         console.log(response.items[0].volumeInfo.title)
       })
-
-    console.log(userInput);
+      .catch((error) => error.msg)
   });
 
 
