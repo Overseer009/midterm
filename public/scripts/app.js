@@ -108,7 +108,6 @@ $(document).ready(function() {
     .trim()
     .replace(/\s/g, '%20');
 
-
     $.get(`/api/external/products?input=${userInput}`).then(data => console.log(data))
     $.get(`/api/external/movies?input=${userInput}`).then(data => console.log(data))
     $.get(`/api/external/books?input=${userInput}`).then(data => console.log(data))
