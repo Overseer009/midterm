@@ -1,3 +1,22 @@
-h1 {
-  color:red
+body {
+  background-color: rgb(124, 124, 209);
+  display:flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+
+}
+
+input {
+  width: 6em;
+  height: 3em;
+  background-color:rgb(209, 233, 101)
+}
+
+textarea {
+  resize: none;
+}
+.credentials {
+  display:flex
 }

@@ -15,7 +15,7 @@ const request = require("request")
 const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
-const dbHelpers = require("./routes/dbHelpers")(db);
+const dbHelpers = require("./db/dbHelpers")(db);
 db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
