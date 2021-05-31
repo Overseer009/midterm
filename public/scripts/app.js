@@ -100,30 +100,33 @@ $(document).ready(function() {
 
     //------Endpoints/Keys-----//
     const userInput = $(".userText")
-      .val()
-      .trim()
-      .replace(/\s/g, '+')
+    .val()
+    .trim()
+    .replace(/\s/g, '+')
 
     const userInput2 = $(".userText")
-      .val()
-      .trim()
-      .replace(/\s/g, '%20')
+    .val()
+    .trim()
+    .replace(/\s/g, '%20')
 
-    const keyBooks = '&key=AIzaSyB4Q5zFQ0mwyehCcTLfGafcu9VRY7_Jfq0'
+    $(".userText").val("")
+
+    const keyBooks = '&key=AIzaSyBqrpmtB6Cd38LRzqDB3DHqE25KZXFyW1w'
     const keyMovies = 'ac4024b3'
-    const keyRestaurants = '&key=AIzaSyDEopJDXd9dieKX6y_kb6nUgq61qeBuBNY'
+    const keyRestaurants = '&key=AIzaSyAafNaF6s0LjvBN_rP8gBS4lnK3mNyBGwA'
+    const keyProducts= '30C14FDB59994F9484F90C0B3E51292C'
 
     const endpointBooks = 'https://www.googleapis.com/books/v1/volumes?q='
     const endpointMovies = `http://www.omdbapi.com/?apikey=${keyMovies}&t=`
     const endpointRestaurants = `https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=${userInput2}&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry`//term //location
-
+    const endpointProducts = `https://api.rainforestapi.com/request?api_key=${keyProducts}&type=search&amazon_domain=amazon.com&search_term=`
 
 
 
     //going to be coming in from the db users table.
     // const city = "&city=montreal"
 
-    console.log(endpointRestaurants + keyRestaurants);
+    // console.log(endpointProducts + userInput);
     // console.log(endpointMovies + userInput);
     // console.log(endpointBooks + userInput + keyBooks);
 
@@ -135,8 +138,8 @@ $(document).ready(function() {
       dataType: "JSON"
     })
       .then((response) => {
+        // console.log(response.items[0].volumeInfo.title)
         console.log(response.items)
-        console.log(response.items[0].volumeInfo.title)
       })
       .catch((error) => error.msg)
 
@@ -154,17 +157,28 @@ $(document).ready(function() {
 
     //------YELP Restaurants API GET-----//
 
-    $.ajax({
-      method: "GET",
-      url: endpointRestaurants + keyRestaurants,
-      dataType: "JSON",
-    })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => error.msg)
-  });
+    // $.ajax({
+    //   method: "GET",
+    //   url: endpointRestaurants + keyRestaurants,
+    //   dataType: "JSON",
+    // })
+    //   .then((response) => {
+    //     console.log(response);
+    //   })
+    //   .catch((error) => error.msg)
 
+  //------Rainforest Products API GET-----//
+
+  $.ajax({
+    method: "GET",
+    url: endpointProducts + userInput,
+    dataType: "JSON",
+  })
+    .then((response) => {
+      console.log(response.search_results);
+    })
+    .catch((error) => error.msg)
+  });
 
   //------AJAX Function Calls-----//
 
