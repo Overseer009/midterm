@@ -5,7 +5,6 @@ const request = require("request")
 const bodyParser = require("body-parser");
 router.use(bodyParser.urlencoded({ extended: true }));
 
-
 module.exports = (dbHelpers) => {
 
   router.get("/logister", (req, res) => {
@@ -18,21 +17,22 @@ module.exports = (dbHelpers) => {
     console.log("username:", logUsername);
     dbHelpers.findUserByUsername(logUsername)
       .then((user) => {
-        console.log("user: ", user)
-        if(logUsername === user) {
-          console.log("HIIHIII")
-          res.redirect("/")
+        if(user === logUsername) {
+          dbHelpers.authUser(logPassword)
+          .then((password) => {
+            if (password === logPassword){
+              res.redirect("/")
+            } else {
+              console.log("wrong password")
+            }
+          })
+          .catch((error)=> res.json(error))
         } else {
           console.log("no user by that name")
         }
 
-
-
       })
       .catch((error) => res.json(error));
-
-    // console.log("req:  ", req.body);
-    // console.log("testing")
 
   })
   return router;

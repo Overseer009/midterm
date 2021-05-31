@@ -93,7 +93,6 @@ module.exports = (db) => {
   };
 
   const findUserByUsername = function(user) {
-    console.log("user in func:", user);
     const stringQuery = `
     SELECT username
     FROM users
@@ -104,6 +103,21 @@ module.exports = (db) => {
     .then((data) => data.rows[0].username)
     .catch((error) => error.message);
   };
+
+  const authUser = function(password) {
+    const stringQuery =
+  `
+  SELECT password
+  FROM users
+  WHERE password = $1;
+  `;
+  return db
+  .query(stringQuery, [password])
+  .then((data)=> data.rows[0].password)
+  .catch((error)=> error.message)
+  }
+
+
   //------------------------------------------------------------
 
   return {
@@ -113,6 +127,7 @@ module.exports = (db) => {
     getRestaurantsForUser,
     getProductsForUser,
     getMiscForUser,
-    findUserByUsername
+    findUserByUsername,
+    authUser
   };
 };
