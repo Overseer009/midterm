@@ -4,12 +4,11 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  font-family: 'Limelight', cursive;
 }
 
 .form {
   display:flex;
-  margin-top: 5%;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -17,17 +16,25 @@ body {
 input {
   width: 6em;
   height: 3em;
-  background-color:hotpink
+  background-color:hotpink;
+  border-radius: 50%;
+  border:0;
+
+}
+input:hover{
+  box-shadow: 3px 3px;
 }
 
 textarea {
   resize: none;
-  margin: 0.5em 0.5em
+  margin: 0.5em 0.5em;
+
+
 }
 .credentials {
-  display:flex;
-  justify-content: center;
-  align-items: center;
+
+
+  display: inline-block;
 
 }
 

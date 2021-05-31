@@ -16,6 +16,7 @@ const { Pool } = require("pg");
 const dbParams = require("./lib/db.js");
 const db = new Pool(dbParams);
 const dbHelpers = require("./db/dbHelpers")(db);
+// const logisterHelpers = require("./routes/logisterHelpers")
 db.connect();
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -43,6 +44,9 @@ const moviesRoutes = require("./db/dbCategoryRoutes/movies");
 const restaurantsRoutes = require("./db/dbCategoryRoutes/restaurants");
 const productsRoutes = require("./db/dbCategoryRoutes/products");
 const miscRoutes = require("./db/dbCategoryRoutes/misc");
+const logisterRoutes = require("./routes/logister")
+
+//
 const apiRoutes = require("./routes/apis")
 
 // Mount all resource routes
@@ -53,6 +57,7 @@ app.use("/api/movies", moviesRoutes(dbHelpers));
 app.use("/api/restaurants", restaurantsRoutes(dbHelpers));
 app.use("/api/products", productsRoutes(dbHelpers));
 app.use("/api/misc", miscRoutes(dbHelpers));
+app.use("/", logisterRoutes(dbHelpers))
 
 //-----API routes-----//
 app.use("/api/external", apiRoutes)
@@ -67,9 +72,6 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/logister", (req, res) => {
-  res.render("logister");
-});
 
 
 app.listen(PORT, () => {

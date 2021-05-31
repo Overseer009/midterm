@@ -91,6 +91,19 @@ module.exports = (db) => {
       .then((data) => data.rows)
       .catch((error) => error.message);
   };
+
+  const findUserByUsername = function(user) {
+    console.log("user in func:", user);
+    const stringQuery = `
+    SELECT username
+    FROM users
+    WHERE username = $1;
+    `;
+    return db
+    .query(stringQuery, [user])
+    .then((data) => data.rows[0].username)
+    .catch((error) => error.message);
+  };
   //------------------------------------------------------------
 
   return {
@@ -99,6 +112,7 @@ module.exports = (db) => {
     getMoviesForUser,
     getRestaurantsForUser,
     getProductsForUser,
-    getMiscForUser
+    getMiscForUser,
+    findUserByUsername
   };
 };

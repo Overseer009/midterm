@@ -13,7 +13,8 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/logister.css" type="text/css" />
-
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
 
   <!--jQuery-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
@@ -29,20 +30,25 @@
 </head>
 
 <body>
-  <h1>Porject Name</h1>
+  <h1>Porject Name  &#128512</h1>
   <div class = "form">
 
-<div class = "credentials">
-  <p>Username:</p>
-  <textarea class = "username" placeholder="Enter username"></textarea>
+
+
+<form method="POST" action="/logister">
+  <div class = "credentials">
+     <p>Username:</p>
+     <textarea class = "username" name="username" placeholder="Enter username"></textarea>
+  </div>
+  <div class = "credentials">
+     <p>Password:</p>
+     <textarea class = "password"  name="password" placeholder="Enter password"></textarea>
+
+     <input type = "submit" value ="log in"/>
+  </form>
 </div>
 
-<div class = "credentials">
-  <p>Password:</p>
-  <textarea class = "password" placeholder="Enter password"></textarea>
-</div>
 
-<input type = "submit" value ="log in"/>
 <h2>Dont have an account? Register here</h2>
   <input type = "submit" value ="Register"/>
 </div>
