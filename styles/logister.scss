@@ -5,18 +5,37 @@ body {
   align-items: center;
   flex-direction: column;
 
-
 }
 
+.form {
+  display:flex;
+  margin-top: 5%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 input {
   width: 6em;
   height: 3em;
-  background-color:rgb(209, 233, 101)
+  background-color:hotpink
 }
 
 textarea {
   resize: none;
+  margin: 0.5em 0.5em
 }
 .credentials {
-  display:flex
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+h1{
+  font-size: 5em;
+  margin-top: 5%;
+}
+
+p {
+  margin: 0.5em 0.5em
 }

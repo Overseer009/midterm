@@ -37,12 +37,12 @@ app.use(express.static("public"));
 
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
-const usersRoutes = require("./routes/users");
-const booksRoutes = require("./routes/books");
-const moviesRoutes = require("./routes/movies");
-const restaurantsRoutes = require("./routes/restaurants");
-const productsRoutes = require("./routes/products");
-const miscRoutes = require("./routes/misc");
+const usersRoutes = require("./db/dbCategoryRoutes/users");
+const booksRoutes = require("./db/dbCategoryRoutes/books");
+const moviesRoutes = require("./db/dbCategoryRoutes/movies");
+const restaurantsRoutes = require("./db/dbCategoryRoutes/restaurants");
+const productsRoutes = require("./db/dbCategoryRoutes/products");
+const miscRoutes = require("./db/dbCategoryRoutes/misc");
 const apiRoutes = require("./routes/apis")
 
 // Mount all resource routes

@@ -14,3 +14,11 @@ router.get("/", (req, res) => {
     res.render("index")
   }
 })
+
+router.post("/login", (req, res) => {
+  if(req.currentUser) {
+    res.redirect('/')
+  }
+  const templateVars = {user: req.currentUser};
+  res.render("logister", templateVars)
+})
