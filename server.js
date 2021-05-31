@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const sass = require("node-sass-middleware");
 const app = express();
 const morgan = require("morgan");
+const request = require("request")
 
 // PG database client/connection setup
 const { Pool } = require("pg");
@@ -42,6 +43,8 @@ const moviesRoutes = require("./routes/movies");
 const restaurantsRoutes = require("./routes/restaurants");
 const productsRoutes = require("./routes/products");
 const miscRoutes = require("./routes/misc");
+const apiRoutes = require("./routes/apis")
+
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(dbHelpers));
@@ -50,6 +53,10 @@ app.use("/api/movies", moviesRoutes(dbHelpers));
 app.use("/api/restaurants", restaurantsRoutes(dbHelpers));
 app.use("/api/products", productsRoutes(dbHelpers));
 app.use("/api/misc", miscRoutes(dbHelpers));
+
+//-----API routes-----//
+app.use("/api/external", apiRoutes)
+
 // Note: mount other resources here, using the same pattern above
 
 // Home page
@@ -59,6 +66,7 @@ app.use("/api/misc", miscRoutes(dbHelpers));
 app.get("/", (req, res) => {
   res.render("index");
 });
+
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

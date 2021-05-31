@@ -1,3 +1,4 @@
+
 const express = require("express");
 const router = express.Router();
 
@@ -7,6 +8,7 @@ module.exports = (dbHelpers) => {
       .getProductsForUser()
       .then((products) => res.json(products))
       .catch((error) => res.json(error));
+
   });
   return router;
 };
