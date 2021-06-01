@@ -80,10 +80,13 @@ app.use("/api/external", apiRoutes)
 // Separate them into separate routes files (see above).
 
 app.get("/", (req, res) => {
-  res.render("index");
+  if (!req.session.user_id) {
+    res.redirect("/logister")
+  } else {
+    res.render("index");
+  }
+
 });
-
-
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);

@@ -9,8 +9,16 @@ const saltRounds = 10;
 module.exports = (dbHelpers) => {
 
   router.get("/logister", (req, res) => {
-    res.render("logister");
-  })
+    if (!req.session.user_id) {
+      res.render("logister");
+    }
+    res.redirect("/")
+  });
+
+  router.post("/logout", (req, res) => {
+    req.session.user_id = null;
+    res.redirect('/logister');
+  });
 
   router.post("/logister", (req, res) => {
     const logUsername = req.body.username
@@ -42,7 +50,6 @@ module.exports = (dbHelpers) => {
           dbHelpers.createUser(logUsername, logPassword)
             .then((user) => {
               console.log("user info: ", user)
-              //console.log(req.session)
               req.session.user_id = user.id
               res.redirect("/");
             })
@@ -54,17 +61,3 @@ module.exports = (dbHelpers) => {
   })
   return router;
 }
-
-
-
-// router.get("/", (req, res) => {
-//   const currentUser = //database user[req.params of database]
-
-//   if(!currentUser) {
-//     res.render("logister")
-//   } else {
-//     res.render("index")
-//   }
-// })
-
-
