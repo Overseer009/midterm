@@ -95,7 +95,10 @@ const findUserByUsername = function(user) {
     `;
   return db
     .query(stringQuery, [user])
-    .then((data) => data.rows[0])
+    .then((data) =>  {
+      console.log("within the function:", data.rows);
+      return data.rows[0];
+    })
 };
 
 const authUser = function(password) {

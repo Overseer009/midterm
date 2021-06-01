@@ -11,8 +11,9 @@ nav {
 }
 
 .input-group {
-  display: inherit;
-  width: 45%;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
 }
 
 .appName {

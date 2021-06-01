@@ -16,7 +16,7 @@ module.exports = (dbHelpers) => {
   });
 
   router.post("/logout", (req, res) => {
-    req.session.user_id = null;
+    req.session = null;
     res.redirect('/logister');
   });
 
@@ -26,13 +26,13 @@ module.exports = (dbHelpers) => {
     dbHelpers.findUserByUsername(logUsername)
       .then((user) => {
         if (!user) {
-          console.log("invalid user")
+          res.json("invalid user")
         } else {
           if (bcrypt.compareSync(logPassword, user.password)) {
             req.session.user_id = user.id;
             res.redirect("/");
           } else {
-            console.log("wrong password")
+            res.json("wrong password")
           }
         }
       })
@@ -44,20 +44,18 @@ module.exports = (dbHelpers) => {
   router.post("/register", (req, res) => {
     const logUsername = req.body.username;
     const logPassword = bcrypt.hashSync(req.body.password, 10);
-    console.log("username:",logUsername)
     dbHelpers.findUserByUsername(logUsername)
       .then((user) => {
-        if (user !== logUsername) {
+        console.log("USER: ", user)
+        if (!user) {
           dbHelpers.createUser(logUsername, logPassword)
             .then((user) => {
-              console.log("user info: ", user)
               req.session.user_id = user.id
               res.redirect("/");
             })
            .catch((error) => res.json(error));
-
         } else {
-          console.log("invalid credential")
+          res.json("User already exists")
         }
       })
   })
