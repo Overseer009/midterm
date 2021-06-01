@@ -99,22 +99,34 @@ module.exports = (db) => {
     WHERE username = $1;
     `;
     return db
-    .query(stringQuery, [user])
-    .then((data) => data.rows[0].username)
-    .catch((error) => error.message);
+      .query(stringQuery, [user])
+      .then((data) => data.rows[0].username)
+      .catch((error) => error.message);
   };
 
   const authUser = function(password) {
     const stringQuery =
-  `
+      `
   SELECT password
   FROM users
   WHERE password = $1;
   `;
-  return db
-  .query(stringQuery, [password])
-  .then((data)=> data.rows[0].password)
-  .catch((error)=> error.message)
+    return db
+      .query(stringQuery, [password])
+      .then((data) => data.rows[0].password)
+      .catch((error) => error.message)
+  }
+
+
+  const createUser = function(user, password) {
+    const stringQuery = `
+    INSERT INTO users (username, password)
+    VALUES ($1, $2)
+    `
+    return db
+      .query(stringQuery, [user, password])
+      .then((data) => console.log(data))
+      .catch((error) => error.message)
   }
 
 
@@ -128,6 +140,7 @@ module.exports = (db) => {
     getProductsForUser,
     getMiscForUser,
     findUserByUsername,
-    authUser
+    authUser,
+    createUser
   };
 };

@@ -43,14 +43,19 @@
   <div class = "credentials">
      <p>Password:</p>
      <textarea class = "password"  name="password" placeholder="Enter password"></textarea>
-
      <input type = "submit" value ="log in"/>
+
   </form>
 </div>
 
-
-<h2>Dont have an account? Register here</h2>
+<form method="POST" action="/register"">
+  <h2>Dont have an account? Register here</h2>
+  <p>Username:</p>
+  <textarea class = "username" name="username" placeholder="Enter username"></textarea>
+  <p>Password:</p>
+  <textarea class = "password"  name="password" placeholder="Enter password"></textarea>
   <input type = "submit" value ="Register"/>
+</form>
 </div>
 
 </body>
