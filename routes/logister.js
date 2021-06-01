@@ -10,6 +10,7 @@ module.exports = (dbHelpers) => {
   router.get("/logister", (req, res) => {
     if (!req.session.user_id) {
       res.render("logister");
+      return
     }
     res.redirect("/")
   });
@@ -43,6 +44,7 @@ module.exports = (dbHelpers) => {
   router.post("/register", (req, res) => {
     const logUsername = req.body.username;
     const logPassword = bcrypt.hashSync(req.body.password, 10);
+    console.log("username:",logUsername)
     dbHelpers.findUserByUsername(logUsername)
       .then((user) => {
         if (user !== logUsername) {
@@ -52,6 +54,7 @@ module.exports = (dbHelpers) => {
               req.session.user_id = user.id
               res.redirect("/");
             })
+           .catch((error) => res.json(error));
 
         } else {
           console.log("invalid credential")

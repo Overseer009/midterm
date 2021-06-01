@@ -5,7 +5,6 @@ module.exports = (db) => {
     return db
       .query(`SELECT * FROM users;`)
       .then((data) => data.rows)
-      .catch((error) => error.message)
   };
 
   //--------------------------------------------------------------
@@ -23,7 +22,6 @@ module.exports = (db) => {
     return db
       .query(stringQuery)
       .then((data) => data.rows)
-      .catch((error) => error.message);
   };
   //------------------------------------------------------------
   const getMoviesForUser = () => {
@@ -40,7 +38,6 @@ module.exports = (db) => {
     return db
       .query(stringQuery)
       .then((data) => data.rows)
-      .catch((error) => error.message);
   };
   //------------------------------------------------------------
   const getRestaurantsForUser = () => {
@@ -55,7 +52,6 @@ module.exports = (db) => {
     return db
       .query(stringQuery)
       .then((data) => data.rows)
-      .catch ((error) => error.message);
 };
 //------------------------------------------------------------
 
@@ -72,7 +68,6 @@ const getProductsForUser = () => {
   return db
     .query(stringQuery)
     .then((data) => data.rows)
-    .catch((error) => error.message);
 };
 //------------------------------------------------------------
 
@@ -90,7 +85,6 @@ const getMiscForUser = () => {
   return db
     .query(stringQuery)
     .then((data) => data.rows)
-    .catch((error) => error.message);
 };
 
 const findUserByUsername = function(user) {
@@ -102,7 +96,6 @@ const findUserByUsername = function(user) {
   return db
     .query(stringQuery, [user])
     .then((data) => data.rows[0])
-    .catch((error) => error.message);
 };
 
 const authUser = function(password) {
@@ -115,7 +108,6 @@ const authUser = function(password) {
   return db
     .query(stringQuery, [password])
     .then((data) => data.rows[0].password)
-    .catch((error) => error.message)
 }
 
 
@@ -129,7 +121,6 @@ const createUser = function(user, password) {
   return db
     .query(stringQuery, [user, password])
     .then((data) => findUserByUsername(user))
-    .catch((error) => error.message)
 }
 
 
