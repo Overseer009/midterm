@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const request = require("request")
-const bodyParser = require("body-parser");
 const dbHelpers = require("../db/dbHelpers");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
