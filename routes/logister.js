@@ -21,7 +21,8 @@ module.exports = (dbHelpers) => {
           console.log("invalid user")
         } else {
           if (bcrypt.compareSync(logPassword, user.password)) {
-            res.redirect("/")
+            req.session.user_id = user.id;
+            res.redirect("/");
           } else {
             console.log("wrong password")
           }
