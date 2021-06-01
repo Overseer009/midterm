@@ -46,7 +46,6 @@ module.exports = (dbHelpers) => {
     const logPassword = bcrypt.hashSync(req.body.password, 10);
     dbHelpers.findUserByUsername(logUsername)
       .then((user) => {
-        console.log("USER: ", user)
         if (!user) {
           dbHelpers.createUser(logUsername, logPassword)
             .then((user) => {

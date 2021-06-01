@@ -101,12 +101,49 @@ $(document).ready(function() {
     const userInput = $(".userText")
     .val()
     .trim()
+    .toLowerCase()
     .replace(/\s/g, '+');
 
-    $.get(`/api/external/products?input=${userInput}`).then(data => console.log(data))
-    $.get(`/api/external/movies?input=${userInput}`).then(data => console.log(data))
-    $.get(`/api/external/books?input=${userInput}`).then(data => console.log(data))
-    $.get(`/api/external/restaurants?input=${userInput}`).then(data => console.log(data))
+    $.get(`/api/external/products?input=${userInput}`).then(data => {
+      let productTitle
+      if (JSON.parse(data).search_results.length === 0) {
+        productTitle = undefined
+        console.log("product: ", productTitle)
+      } else {
+        productTitle = JSON.parse(data).search_results[0].title
+        console.log("product: ", productTitle)
+      }
+    })
+
+    $.get(`/api/external/movies?input=${userInput}`).then((data) => {
+      const movieTitle = JSON.parse(data).Title
+      console.log("movies: ", movieTitle)
+    })
+
+    $.get(`/api/external/books?input=${userInput}`).then((data) => {
+      let bookTitle
+      if (JSON.parse(data).totalItems === 0) {
+        bookTitle = undefined
+        console.log("books: ", bookTitle)
+      } else {
+        bookTitle = JSON.parse(data).items[0].volumeInfo.title
+        console.log("books: ", bookTitle)
+      }
+    })
+
+    $.get(`/api/external/restaurants?input=${userInput}`).then(data => {
+      let restaurantTitle
+      if (JSON.parse(data).status === "ZERO_RESULTS") {
+        restaurantTitle = undefined
+        console.log("restaurants: ", restaurantTitle);
+      } else {
+        restaurantTitle = JSON.parse(data).candidates[0].name
+        console.log("restaurants: ", restaurantTitle)
+      }
+    })
+
+    // $.post(`/api/external/books?input=${userInput}`).then(data => console.log(data))
+
 
     $(".userText").val("");
   });

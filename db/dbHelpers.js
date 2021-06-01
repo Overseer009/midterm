@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const cookieSession = require("cookie-session");
 module.exports = (db) => {
   //--------------------------------------------------------------
   const getUsers = () => {
@@ -9,15 +10,13 @@ module.exports = (db) => {
 
   //--------------------------------------------------------------
   const getBooksForUser = () => {
-    // const stringQuery = `
-    //   SELECT * FROM books
-    //   JOIN users ON users.id = user_id
-    //   WHERE users.id = $1;`;
-    // const id = [req.params.id];
 
+    // const id = [req.session.user_id];
     const stringQuery = `
-      SELECT * FROM books;
-    `
+      SELECT * FROM books
+      `;
+
+
 
     return db
       .query(stringQuery)
@@ -95,10 +94,7 @@ const findUserByUsername = function(user) {
     `;
   return db
     .query(stringQuery, [user])
-    .then((data) =>  {
-      console.log("within the function:", data.rows);
-      return data.rows[0];
-    })
+    .then((data) => data.rows[0]);
 };
 
 const authUser = function(password) {
@@ -125,6 +121,16 @@ const createUser = function(user, password) {
     .query(stringQuery, [user, password])
     .then((data) => findUserByUsername(user))
 }
+//------------------------------------------------------------
+// const addBooks = function (name, user_id){
+//   const stringQuery = `
+//   INSERT INTO books (name, user_id)
+//   VALUES ($1, $2);
+//   `
+//   return db
+//     .query(stringQuery, [name, user_id])
+//     .then((data) => data)
+// }
 
 
 //------------------------------------------------------------
@@ -138,6 +144,7 @@ return {
   getMiscForUser,
   findUserByUsername,
   authUser,
-  createUser
+  createUser,
+  // addBooks
 };
 };
