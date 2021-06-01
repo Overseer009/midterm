@@ -10,8 +10,8 @@ DROP TABLE IF EXISTS products CASCADE;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY NOT NULL,
   username VARCHAR(50) NOT NULL,
-  password VARCHAR(50) NOT NULL,
-  email VARCHAR(50),
+  password VARCHAR(255) NOT NULL,
+  email VARCHAR(255),
   bio TEXT,
   avatar VARCHAR(255)
  );

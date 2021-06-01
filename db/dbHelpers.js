@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 module.exports = (db) => {
   //--------------------------------------------------------------
   const getUsers = () => {
@@ -94,23 +95,23 @@ module.exports = (db) => {
 
   const findUserByUsername = function(user) {
     const stringQuery = `
-    SELECT username
+    SELECT id, username, password
     FROM users
     WHERE username = $1;
     `;
     return db
       .query(stringQuery, [user])
-      .then((data) => data.rows[0].username)
+      .then((data) => data.rows[0])
       .catch((error) => error.message);
   };
 
   const authUser = function(password) {
-    const stringQuery =
-      `
-  SELECT password
-  FROM users
-  WHERE password = $1;
-  `;
+
+    const stringQuery =`
+    SELECT password
+    FROM users
+    WHERE password = $1;
+    `
     return db
       .query(stringQuery, [password])
       .then((data) => data.rows[0].password)
@@ -119,13 +120,15 @@ module.exports = (db) => {
 
 
   const createUser = function(user, password) {
+
+    console.log("Create user, hashed:", password);
     const stringQuery = `
     INSERT INTO users (username, password)
-    VALUES ($1, $2)
+    VALUES ($1, $2);
     `
     return db
       .query(stringQuery, [user, password])
-      .then((data) => console.log(data))
+      .then((data) => data)
       .catch((error) => error.message)
   }
 

@@ -1,10 +1,19 @@
 const express = require("express");
 const router = express.Router();
 const request = require("request")
-// const cookieSession = require("")
 const bodyParser = require("body-parser");
 const dbHelpers = require("../db/dbHelpers");
 router.use(bodyParser.urlencoded({ extended: true }));
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+const cookieSession = require("cookie-session");
+
+router.use(
+  cookieSession({
+    name: "session",
+    keys: ["key1", "key2"],
+  })
+);
 
 module.exports = (dbHelpers) => {
 
@@ -14,22 +23,17 @@ module.exports = (dbHelpers) => {
 
   router.post("/logister", (req, res) => {
     const logUsername = req.body.username
-    const logPassword = req.body.password
-    console.log("username:", logUsername);
+    const logPassword = req.body.password;
     dbHelpers.findUserByUsername(logUsername)
       .then((user) => {
-        if (user === logUsername) {
-          dbHelpers.authUser(logPassword)
-            .then((password) => {
-              if (password === logPassword) {
-                res.redirect("/")
-              } else {
-                console.log("wrong password")
-              }
-            })
-            .catch((error) => res.json(error))
+        if (!user) {
+          console.log("invalid user")
         } else {
-          console.log("no user by that name")
+          if (bcrypt.compareSync(logPassword, user.password)) {
+            res.redirect("/")
+          } else {
+            console.log("wrong password")
+          }
         }
       })
       .catch((error) => res.json(error));
@@ -39,7 +43,7 @@ module.exports = (dbHelpers) => {
 
   router.post("/register", (req, res) => {
     const logUsername = req.body.username;
-    const logPassword = req.body.password;
+    const logPassword = bcrypt.hashSync(req.body.password, 10);
     console.log("registeration:", logUsername)
     dbHelpers.findUserByUsername(logUsername)
       .then((user) => {
