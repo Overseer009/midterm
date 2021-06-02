@@ -121,19 +121,17 @@ const createUser = function(user, password) {
 }
 //------------------------------------------------------------
 
-  const insertSearch = (tableName, userInput, cookie) => {
+  const insertSearch = (tableName, itemName, cookie) => {
 
     const stringQuery =`
     INSERT INTO ${tableName} (name, user_id)
     VALUES ($1, $2);
     `
     return db
-    .query(stringQuery, [userInput, cookie])
+    .query(stringQuery, [itemName, cookie])
     .then((data) => {
       console.log("SUCCESS")
     })
-    
-
   }
 
  const deleteOption = (tableName, id) => {
@@ -146,8 +144,19 @@ const createUser = function(user, password) {
    .then((data) => {
      console.log("DELETED")
    })
+  }
+   const fetchItemById = (tableName, id) => {
+    const stringQuery =`
+      SELECT name
+      FROM ${tableName}
+      WHERE id = $1;
+      `
+    return db
+    .query(stringQuery, [id])
+    .then((data)=> data.rows[0])
+  }
 
- }
+
 //------------------------------------------------------------
 
 return {
@@ -161,6 +170,7 @@ return {
   authUser,
   createUser,
   insertSearch,
-  deleteOption
+  deleteOption,
+  fetchItemById
 };
 };

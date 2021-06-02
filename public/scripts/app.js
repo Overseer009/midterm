@@ -22,11 +22,11 @@ $(document).ready(function() {
       if (allBooks){
         for (book of books) {
           $(".toRead").append(`
-          <a>${book.name}
-          <button class = "changeButton">
+          <a >${book.name}
+          <button class = "updateButton" id="update.books.${book.id}">
           <i class="fas fa-plus"></i>
           </button>
-          <button class = "deleteButton" id ="books.${book.id}">
+          <button class = "deleteButton" id ="delete.books.${book.id}">
           <i class="fas fa-trash-alt" ></i>
           </button>
           </a>
@@ -34,11 +34,11 @@ $(document).ready(function() {
         }
       } else {
         $(".toRead").append(`
-        <a>${books[books.length-1].name}
-        <button class = "changeButton">
+        <a >${books[books.length-1].name}
+        <button class = "updateButton" id="update.books.${book.id}">
         <i class="fas fa-plus"></i>
         </button>
-        <button class = "deleteButton" id ="books.${books[books.length-1].id}">
+        <button class = "deleteButton" id="delete.books.${books[books.length-1].id}">
         <i class="fas fa-trash-alt" ></i>
         </button>
         </a>
@@ -55,11 +55,11 @@ $(document).ready(function() {
       if (allMovies){
         for (movie of movies) {
           $(".toWatch").append(`
-          <a>${movie.name}
-          <button class = "changeButton">
+          <a >${movie.name}
+          <button class = "updateButton" id="update.movies.${movie.id}">
           <i class="fas fa-plus"></i>
           </button>
-          <button class = "deleteButton" id ="movies.${movie.id}">
+          <button class = "deleteButton" id ="delete.movies.${movie.id}">
           <i class="fas fa-trash-alt" ></i>
           </button>
           </a>
@@ -67,11 +67,11 @@ $(document).ready(function() {
         }
       } else {
         $(".toWatch").append(`
-        <a>${movies[movies.length-1].name}
-        <button class = "changeButton">
+        <a >${movies[movies.length-1].name}
+        <button class = "updateButton" id="update.movies.${movie.id}">
         <i class="fas fa-plus"></i>
         </button>
-        <button class = "deleteButton" id ="movies.${movies[movies.length-1].id}">
+        <button class = "deleteButton" id ="delete.movies.${movies[movies.length-1].id}">
         <i class="fas fa-trash-alt" ></i>
         </button>
         </a>
@@ -88,11 +88,11 @@ $(document).ready(function() {
       if (allRestaurants){
         for (restaurant of restaurants) {
           $(".toEat").append(`
-          <a>${restaurant.name}
-          <button class = "changeButton">
+          <a >${restaurant.name}
+          <button class = "updateButton" id="update.restaurants.${restaurant.id}">
           <i class="fas fa-plus"></i>
           </button>
-          <button class = "deleteButton" id ="restaurants.${restaurant.id}">
+          <button class = "deleteButton" id="delete.restaurants.${restaurant.id}">
           <i class="fas fa-trash-alt" ></i>
           </button>
           </a>
@@ -100,11 +100,11 @@ $(document).ready(function() {
         }
       } else {
         $(".toEat").append(`
-        <a>${restaurants[restaurants.length-1].name}
-        <button class = "changeButton">
+        <a >${restaurants[restaurants.length-1].name}
+        <button class = "updateButton" id="update.restaurants.${restaurant.id}">
         <i class="fas fa-plus"></i>
         </button>
-        <button class = "deleteButton" id ="restaurants.${restaurants[restaurants.length-1].id}">
+        <button class = "deleteButton" id="delete.restaurants.${restaurants[restaurants.length-1].id}">
         <i class="fas fa-trash-alt" ></i>
         </button>
         </a>
@@ -121,11 +121,11 @@ $(document).ready(function() {
       if (allProducts){
         for (product of products) {
           $(".toBuy").append(`
-          <a>${product.name}
-          <button class = "changeButton">
+          <a >${product.name}
+          <button class = "updateButton" id="update.products.${product.id}">
           <i class="fas fa-plus"></i>
           </button>
-          <button class = "deleteButton" id ="products.${product.id}">
+          <button class = "deleteButton" id="delete.products.${product.id}">
           <i class="fas fa-trash-alt" ></i>
           </button>
           </a>
@@ -133,11 +133,11 @@ $(document).ready(function() {
         }
       } else {
         $(".toBuy").append(`
-        <a>${products[products.length-1].name}
-        <button class = "changeButton">
+        <a >${products[products.length-1].name}
+        <button class = "updateButton" id="update.products.${product.id}">
         <i class="fas fa-plus"></i>
         </button>
-        <button class = "deleteButton" id ="products.${products[products.length-1].id}">
+        <button class = "deleteButton" id="delete.products.${products[products.length-1].id}">
         <i class="fas fa-trash-alt" ></i>
         </button>
         </a>
@@ -154,11 +154,11 @@ $(document).ready(function() {
       if (allMisc){
         for (m of misc) {
           $(".other").append(`
-          <a>${m.name}
-          <button class = "changeButton">
+          <a >${m.name}
+          <button class = "updateButton" id ="update.misc.${m.id}">
           <i class="fas fa-plus"></i>
           </button>
-          <button class = "deleteButton" id ="misc.${m.id}">
+          <button class = "deleteButton" id ="delete.misc.${m.id}">
           <i class="fas fa-trash-alt" ></i>
           </button>
           </a>
@@ -166,11 +166,11 @@ $(document).ready(function() {
         }
       } else {
         $(".other").append(`
-        <a>${misc[misc.length-1].name}
-        <button class = "changeButton">
+        <a >${misc[misc.length-1].name}
+        <button class = "updateButton" id="update.misc.${m.id}">
         <i class="fas fa-plus"></i>
         </button>
-        <button class = "deleteButton" id ="misc.${misc[misc.length-1].id}">
+        <button class = "deleteButton" id ="delete.misc.${misc[misc.length-1].id}">
         <i class="fas fa-trash-alt" ></i>
         </button>
         </a>
@@ -295,14 +295,22 @@ $(document).ready(function() {
     //------EDIT (UPDATE AND DELETE FROM LIST)-----//
 
 
-    $( document ).on( "click",".changeButton", function() {
+    $( document ).on( "click",".updateButton", function() {
+
+      const inputValue = $(this).attr("id")
+
+      $.post(`/edit/update?input=${inputValue}`)
       console.log( "HI1");
+      // if (value.includes("books")) {
+
+      // }
 
     });
+
     //-------Delete button for the specific items in the
     $( document ).on( "click",".deleteButton", function() {
       const value = $(this).attr("id")
-      console.log( "id in html:", value);
+
       $.post(`/edit/delete?input=${value}`)
       if (value.includes("books")) {
         $(".toRead").empty();
