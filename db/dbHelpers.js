@@ -16,8 +16,6 @@ module.exports = (db) => {
       SELECT * FROM books
       `;
 
-
-
     return db
       .query(stringQuery)
       .then((data) => data.rows)
@@ -123,6 +121,19 @@ const createUser = function(user, password) {
 }
 //------------------------------------------------------------
 
+  const insertSearch = (tableName, userInput, cookie) => {
+
+    const stringQuery =`
+    INSERT INTO ${tableName} (name, user_id)
+    VALUES ($1, $2);
+    `
+    return db
+    .query(stringQuery, [userInput, cookie])
+    .then((data) => {
+      console.log("SUCCESS")
+    })
+
+  }
 
 
 //------------------------------------------------------------
@@ -137,5 +148,6 @@ return {
   findUserByUsername,
   authUser,
   createUser,
+  insertSearch
 };
 };

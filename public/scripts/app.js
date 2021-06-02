@@ -13,13 +13,17 @@ $(document).ready(function() {
     });
   }
 
-  const loadBooks = () => {
+  const loadBooks = (allBooks) => {
     $.ajax({
       method: "GET",
       url: "/api/books",
     }).done((books) => {
-      for (book of books) {
-        $("<a>").text(book.name).appendTo($(".toRead"));
+      if (allBooks){
+        for (book of books) {
+          $("<a>").text(book.name).appendTo($(".toRead"));
+        }
+      } else {
+        $("<a>").text(books[books.length-1].name).appendTo($(".toRead"));
       }
     });
   }
@@ -104,50 +108,56 @@ $(document).ready(function() {
     .toLowerCase()
     .replace(/\s/g, '+');
 
-    const searchInput = $(".userText")
-    .val()
-    .trim()
-
     let listObject = {};
 
 
 
     $.get(`/api/external/products?input=${userInput}`).then((data) => {
-       let productTitle
+       let products
       if (JSON.parse(data).search_results.length === 0) {
-        productTitle = undefined
+        products = undefined
       } else {
-        productTitle = JSON.parse(data).search_results[0].title
+        products = JSON.parse(data).search_results[0].title
       }
 
       $.get(`/api/external/movies?input=${userInput}`).then((data) => {
-        let movieTitle
-        movieTitle = JSON.parse(data).Title
+        let movies
+        movies = JSON.parse(data).Title
 
         $.get(`/api/external/books?input=${userInput}`).then((data) => {
-          let bookTitle;
+          let books;
           if (JSON.parse(data).totalItems === 0) {
-            bookTitle = undefined
+            books = undefined
           } else {
-            bookTitle = JSON.parse(data).items[0].volumeInfo.title
+            books = JSON.parse(data).items[0].volumeInfo.title
 
           }
 
           $.get(`/api/external/restaurants?input=${userInput}`).then((data) => {
-            let restaurantTitle;
+            let restaurants;
             if (JSON.parse(data).status === "ZERO_RESULTS") {
-              restaurantTitle = undefined
+              restaurants = undefined
             } else {
-              restaurantTitle = JSON.parse(data).candidates[0].name
+              restaurants = JSON.parse(data).candidates[0].name
             }
 
-            listObject.movieTitle = movieTitle
-            listObject.bookTitle = bookTitle
-            listObject.productTitle = productTitle
-            listObject.restaurantTitle = restaurantTitle
+            listObject.movies = movies
+            listObject.books = books
+            listObject.products = products
+            listObject.restaurants = restaurants
 
-            console.log("list:", listObject);
-            console.log("main choice:", mainFetcher($(".userText").val(), listObject));
+
+            const inputValue = mainFetcher($(".userText").val(), listObject)
+
+            $.post(`/input?input=${inputValue}`).then(
+
+              loadUsers(false),
+              loadBooks(false),
+              loadMovies(false),
+              loadRestaurants(false),
+              loadProducts(false),
+              loadMisc(false)
+            )
           })
         })
       })
@@ -162,12 +172,12 @@ $(document).ready(function() {
 
   //------AJAX Function Calls-----//
 
-  loadUsers();
-  loadBooks();
-  loadMovies();
-  loadRestaurants();
-  loadProducts();
-  loadMisc();
+  loadUsers(true);
+  loadBooks(true);
+  loadMovies(true);
+  loadRestaurants(true);
+  loadProducts(true);
+  loadMisc(true);
 });
 
 const mainFetcher = (search, object) => {

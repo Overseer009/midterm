@@ -54,7 +54,7 @@ const restaurantsRoutes = require("./db/dbCategoryRoutes/restaurants");
 const productsRoutes = require("./db/dbCategoryRoutes/products");
 const miscRoutes = require("./db/dbCategoryRoutes/misc");
 const logisterRoutes = require("./routes/logister");
-// const registerRoutes = require("./routes/logister");
+const inputRoutes = require("./routes/input")
 
 //
 const apiRoutes = require("./routes/apis")
@@ -68,7 +68,7 @@ app.use("/api/restaurants", restaurantsRoutes(dbHelpers));
 app.use("/api/products", productsRoutes(dbHelpers));
 app.use("/api/misc", miscRoutes(dbHelpers));
 app.use("/", logisterRoutes(dbHelpers));
-// app.use("/logister", registerRoutes(dbHelpers));
+app.use("/input", inputRoutes(dbHelpers));
 
 //-----API routes-----//
 app.use("/api/external", apiRoutes)
