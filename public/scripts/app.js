@@ -28,46 +28,62 @@ $(document).ready(function() {
     });
   }
 
-  const loadMovies = () => {
+  const loadMovies = (allMovies) => {
     $.ajax({
       method: "GET",
       url: "/api/movies",
     }).done((movies) => {
-      for (movie of movies) {
-        $("<a>").text(movie.name).appendTo($(".toWatch"));
+      if (allMovies){
+        for (movie of movies) {
+          $("<a>").text(movie.name).appendTo($(".toWatch"));
+        }
+      } else {
+        $("<a>").text(movies[movies.length-1].name).appendTo($(".toWatch"));
       }
     });
   }
 
-  const loadRestaurants = () => {
+  const loadRestaurants = (allRestaurants) => {
     $.ajax({
       method: "GET",
       url: "/api/restaurants",
     }).done((restaurants) => {
-      for (restaurant of restaurants) {
-        $("<a>").text(restaurant.name).appendTo($(".toEat"));
+      if (allRestaurants){
+        for (restaurant of restaurants) {
+          $("<a>").text(restaurant.name).appendTo($(".toEat"));
+        }
+      } else {
+        $("<a>").text(restaurants[restaurants.length-1].name).appendTo($(".toEat"));
       }
-    });
+    });;
   }
 
-  const loadProducts = () => {
+  const loadProducts = (allProducts) => {
     $.ajax({
       method: "GET",
       url: "/api/products",
     }).done((products) => {
-      for (product of products) {
-        $("<a>").text(product.name).appendTo($(".toBuy"));
+      if (allProducts){
+        for (product of products) {
+          $("<a>").text(product.name).appendTo($(".toBuy"));
+        }
+      } else {
+        $("<a>").text(products[products.length-1].name).appendTo($(".toBuy"));
       }
     });
   }
 
-  const loadMisc = () => {
+  const loadMisc = (allMisc) => {
     $.ajax({
       method: "GET",
       url: "/api/misc",
     }).done((misc) => {
-      for (m of misc) {
-        $("<a>").text(m.name).appendTo($(".other"));
+      if (allMisc){
+        for (m of misc) {
+          $("<a>").text(m.name).appendTo($(".other"));
+        }
+      } else {
+        $("<a>").text(misc[misc.length-1].name).appendTo($(".other"));
       }
     });
   }
@@ -146,25 +162,29 @@ $(document).ready(function() {
             listObject.products = products
             listObject.restaurants = restaurants
 
-
+            console.log("list:", listObject);
             const inputValue = mainFetcher($(".userText").val(), listObject)
 
             $.post(`/input?input=${inputValue}`).then(
-
-              loadUsers(false),
-              loadBooks(false),
-              loadMovies(false),
-              loadRestaurants(false),
-              loadProducts(false),
-              loadMisc(false)
+              (data) => {
+                console.log("HI")
+                console.log("input Value:", inputValue[0])
+                console.log("data:", data);
+                if (inputValue[0] === "books"){
+                  loadBooks(false);
+                } else if (inputValue[0] === "movies"){
+                  loadMovies(false);
+                } else if (inputValue[0] === "restaurants") {
+                  loadRestaurants(false);
+                } else if (inputValue[0] === "products") {
+                  loadProducts(false);
+                }
+              }
             )
           })
         })
       })
     })
-
-
-
 
   $(".userText").val("");
 

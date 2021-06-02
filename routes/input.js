@@ -9,7 +9,8 @@ module.exports = (dbHelpers) => {
     const cookie = req.session.user_id
     const inputValue = (req.query.input).split(",")
 
-    dbHelpers.insertSearch(inputValue[0], inputValue[1], cookie)
+    dbHelpers.insertSearch(inputValue[0], inputValue[1], cookie).then(() => res.json("success"))
+
 
   })
   return router;
