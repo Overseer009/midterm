@@ -1,4 +1,5 @@
 $(document).ready(function() {
+// const mainFetcher = require("./functionality")
 
   //------Database Read AJAX Requests------//
 
@@ -104,7 +105,8 @@ $(document).ready(function() {
     .toLowerCase()
     .replace(/\s/g, '+');
 
-    $.get(`/api/external/products?input=${userInput}`).then(data => {
+
+    $.get(`/api/external/products?input=${userInput}`).then((data) => {
       let productTitle
       if (JSON.parse(data).search_results.length === 0) {
         productTitle = undefined
@@ -116,23 +118,24 @@ $(document).ready(function() {
     })
 
     $.get(`/api/external/movies?input=${userInput}`).then((data) => {
-      const movieTitle = JSON.parse(data).Title
+      let movieTitle
+      movieTitle = JSON.parse(data).Title
       console.log("movies: ", movieTitle)
     })
 
     $.get(`/api/external/books?input=${userInput}`).then((data) => {
-      let bookTitle
+      let bookTitle;
       if (JSON.parse(data).totalItems === 0) {
         bookTitle = undefined
         console.log("books: ", bookTitle)
       } else {
-        bookTitle = JSON.parse(data).items[0].volumeInfo.title
+         bookTitle = JSON.parse(data).items[0].volumeInfo.title
         console.log("books: ", bookTitle)
       }
     })
 
-    $.get(`/api/external/restaurants?input=${userInput}`).then(data => {
-      let restaurantTitle
+    $.get(`/api/external/restaurants?input=${userInput}`).then((data) => {
+      let restaurantTitle;
       if (JSON.parse(data).status === "ZERO_RESULTS") {
         restaurantTitle = undefined
         console.log("restaurants: ", restaurantTitle);
@@ -142,11 +145,16 @@ $(document).ready(function() {
       }
     })
 
+
+
+    // console.log("The List:", listObject);
+
     // $.post(`/api/external/books?input=${userInput}`).then(data => console.log(data))
 
-
     $(".userText").val("");
-  });
+
+
+  })
 
   //------AJAX Function Calls-----//
 

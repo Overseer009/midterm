@@ -122,15 +122,7 @@ const createUser = function(user, password) {
     .then((data) => findUserByUsername(user))
 }
 //------------------------------------------------------------
-// const addBooks = function (name, user_id){
-//   const stringQuery = `
-//   INSERT INTO books (name, user_id)
-//   VALUES ($1, $2);
-//   `
-//   return db
-//     .query(stringQuery, [name, user_id])
-//     .then((data) => data)
-// }
+
 
 
 //------------------------------------------------------------
@@ -145,6 +137,5 @@ return {
   findUserByUsername,
   authUser,
   createUser,
-  // addBooks
 };
 };

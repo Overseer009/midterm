@@ -1,11 +1,18 @@
 
 
-//funtion:
-  // make and array or object with the titles of the things to do from the apis
+const mainFetcher = (search, object) => {
+  let listArray = Object.entries(object)
+  for (const choice of listArray) {
+    if (choice[1] !== undefined) {
+      if (choice[1].includes(search)) {
+        //return the list name and the thing name
+        return choice
+      }
+    } else {
+      //going into misc
+      return search
+    }
+  }
+}
 
-  // if (api.name === userInput)
-    // place said input into said api into db
-
-  // if 
-
-
+module.exports = mainFetcher
