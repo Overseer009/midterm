@@ -1,5 +1,4 @@
 $(document).ready(function() {
-// const mainFetcher = require("./functionality")
 
   //------Database Read AJAX Requests------//
 
@@ -105,54 +104,59 @@ $(document).ready(function() {
     .toLowerCase()
     .replace(/\s/g, '+');
 
+    const searchInput = $(".userText")
+    .val()
+    .trim()
+
+    let listObject = {};
+
+
 
     $.get(`/api/external/products?input=${userInput}`).then((data) => {
-      let productTitle
+       let productTitle
       if (JSON.parse(data).search_results.length === 0) {
         productTitle = undefined
-        console.log("product: ", productTitle)
       } else {
         productTitle = JSON.parse(data).search_results[0].title
-        console.log("product: ", productTitle)
       }
+
+      $.get(`/api/external/movies?input=${userInput}`).then((data) => {
+        let movieTitle
+        movieTitle = JSON.parse(data).Title
+
+        $.get(`/api/external/books?input=${userInput}`).then((data) => {
+          let bookTitle;
+          if (JSON.parse(data).totalItems === 0) {
+            bookTitle = undefined
+          } else {
+            bookTitle = JSON.parse(data).items[0].volumeInfo.title
+
+          }
+
+          $.get(`/api/external/restaurants?input=${userInput}`).then((data) => {
+            let restaurantTitle;
+            if (JSON.parse(data).status === "ZERO_RESULTS") {
+              restaurantTitle = undefined
+            } else {
+              restaurantTitle = JSON.parse(data).candidates[0].name
+            }
+
+            listObject.movieTitle = movieTitle
+            listObject.bookTitle = bookTitle
+            listObject.productTitle = productTitle
+            listObject.restaurantTitle = restaurantTitle
+
+            console.log("list:", listObject);
+            console.log("main choice:", mainFetcher($(".userText").val(), listObject));
+          })
+        })
+      })
     })
 
-    $.get(`/api/external/movies?input=${userInput}`).then((data) => {
-      let movieTitle
-      movieTitle = JSON.parse(data).Title
-      console.log("movies: ", movieTitle)
-    })
-
-    $.get(`/api/external/books?input=${userInput}`).then((data) => {
-      let bookTitle;
-      if (JSON.parse(data).totalItems === 0) {
-        bookTitle = undefined
-        console.log("books: ", bookTitle)
-      } else {
-         bookTitle = JSON.parse(data).items[0].volumeInfo.title
-        console.log("books: ", bookTitle)
-      }
-    })
-
-    $.get(`/api/external/restaurants?input=${userInput}`).then((data) => {
-      let restaurantTitle;
-      if (JSON.parse(data).status === "ZERO_RESULTS") {
-        restaurantTitle = undefined
-        console.log("restaurants: ", restaurantTitle);
-      } else {
-        restaurantTitle = JSON.parse(data).candidates[0].name
-        console.log("restaurants: ", restaurantTitle)
-      }
-    })
 
 
 
-    // console.log("The List:", listObject);
-
-    // $.post(`/api/external/books?input=${userInput}`).then(data => console.log(data))
-
-    $(".userText").val("");
-
+  $(".userText").val("");
 
   })
 
@@ -166,3 +170,16 @@ $(document).ready(function() {
   loadMisc();
 });
 
+const mainFetcher = (search, object) => {
+  let listArray = Object.entries(object)
+  for (const choice of listArray) {
+    if (choice[1] !== undefined) {
+      if (choice[1].includes(search)) {
+        //return the list name and the thing name
+        return choice
+      }
+    }
+  }
+  // go to misc
+  return search
+}

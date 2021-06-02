@@ -1,5 +1,4 @@
 
-
 const mainFetcher = (search, object) => {
   let listArray = Object.entries(object)
   for (const choice of listArray) {
@@ -15,4 +14,4 @@ const mainFetcher = (search, object) => {
   }
 }
 
-module.exports = mainFetcher
+module.exports = mainFetcher;
