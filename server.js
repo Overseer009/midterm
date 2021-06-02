@@ -55,7 +55,7 @@ const productsRoutes = require("./db/dbCategoryRoutes/products");
 const miscRoutes = require("./db/dbCategoryRoutes/misc");
 const logisterRoutes = require("./routes/logister");
 const inputRoutes = require("./routes/input")
-
+const editRoutes = require("./routes/edit")
 //
 const apiRoutes = require("./routes/apis")
 
@@ -69,6 +69,7 @@ app.use("/api/products", productsRoutes(dbHelpers));
 app.use("/api/misc", miscRoutes(dbHelpers));
 app.use("/", logisterRoutes(dbHelpers));
 app.use("/input", inputRoutes(dbHelpers));
+app.use("/edit", editRoutes(dbHelpers));
 
 //-----API routes-----//
 app.use("/api/external", apiRoutes)

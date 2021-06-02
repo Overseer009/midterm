@@ -72,10 +72,27 @@ nav {
   float: none;
   color: black;
   padding: 12px 16px;
-  display: block;
+  display: flex;
   text-align: left;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
 .content a:hover {
   background-color: #ddd;
+}
+
+.fa-plus:hover{
+  height:50%;
+  background-color: rgb(155, 155, 155);
+}
+
+.fa-plus{
+  height:80%
+}
+
+.fa-trash-alt:hover{
+  height:50%;
+  background-color: rgb(155, 155, 155);
 }

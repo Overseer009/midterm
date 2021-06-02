@@ -132,10 +132,22 @@ const createUser = function(user, password) {
     .then((data) => {
       console.log("SUCCESS")
     })
+    
 
   }
 
+ const deleteOption = (tableName, id) => {
+   const stringQuery =`
+    DELETE FROM ${tableName}
+    WHERE id = $1
+   `
+   return db
+   .query(stringQuery, [id])
+   .then((data) => {
+     console.log("DELETED")
+   })
 
+ }
 //------------------------------------------------------------
 
 return {
@@ -148,6 +160,7 @@ return {
   findUserByUsername,
   authUser,
   createUser,
-  insertSearch
+  insertSearch,
+  deleteOption
 };
 };

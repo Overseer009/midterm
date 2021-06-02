@@ -9,6 +9,7 @@ $(document).ready(function() {
     }).done((users) => {
       for (user of users) {
         $("<a>").text(user.username).appendTo($(".users"));
+
       }
     });
   }
@@ -20,10 +21,28 @@ $(document).ready(function() {
     }).done((books) => {
       if (allBooks){
         for (book of books) {
-          $("<a>").text(book.name).appendTo($(".toRead"));
+          $(".toRead").append(`
+          <a>${book.name}
+          <button class = "changeButton">
+          <i class="fas fa-plus"></i>
+          </button>
+          <button class = "deleteButton" id ="books.${book.id}">
+          <i class="fas fa-trash-alt" ></i>
+          </button>
+          </a>
+        `);
         }
       } else {
-        $("<a>").text(books[books.length-1].name).appendTo($(".toRead"));
+        $(".toRead").append(`
+        <a>${books[books.length-1].name}
+        <button class = "changeButton">
+        <i class="fas fa-plus"></i>
+        </button>
+        <button class = "deleteButton" id ="books.${books[books.length-1].id}">
+        <i class="fas fa-trash-alt" ></i>
+        </button>
+        </a>
+      `);
       }
     });
   }
@@ -35,12 +54,30 @@ $(document).ready(function() {
     }).done((movies) => {
       if (allMovies){
         for (movie of movies) {
-          $("<a>").text(movie.name).appendTo($(".toWatch"));
+          $(".toWatch").append(`
+          <a>${movie.name}
+          <button class = "changeButton">
+          <i class="fas fa-plus"></i>
+          </button>
+          <button class = "deleteButton" id ="movies.${movie.id}">
+          <i class="fas fa-trash-alt" ></i>
+          </button>
+          </a>
+        `);
         }
       } else {
-        $("<a>").text(movies[movies.length-1].name).appendTo($(".toWatch"));
+        $(".toWatch").append(`
+        <a>${movies[movies.length-1].name}
+        <button class = "changeButton">
+        <i class="fas fa-plus"></i>
+        </button>
+        <button class = "deleteButton" id ="movies.${movies[movies.length-1].id}">
+        <i class="fas fa-trash-alt" ></i>
+        </button>
+        </a>
+      `);
       }
-    });
+    })
   }
 
   const loadRestaurants = (allRestaurants) => {
@@ -50,12 +87,30 @@ $(document).ready(function() {
     }).done((restaurants) => {
       if (allRestaurants){
         for (restaurant of restaurants) {
-          $("<a>").text(restaurant.name).appendTo($(".toEat"));
+          $(".toEat").append(`
+          <a>${restaurant.name}
+          <button class = "changeButton">
+          <i class="fas fa-plus"></i>
+          </button>
+          <button class = "deleteButton" id ="restaurants.${restaurant.id}">
+          <i class="fas fa-trash-alt" ></i>
+          </button>
+          </a>
+        `);
         }
       } else {
-        $("<a>").text(restaurants[restaurants.length-1].name).appendTo($(".toEat"));
+        $(".toEat").append(`
+        <a>${restaurants[restaurants.length-1].name}
+        <button class = "changeButton">
+        <i class="fas fa-plus"></i>
+        </button>
+        <button class = "deleteButton" id ="restaurants.${restaurants[restaurants.length-1].id}">
+        <i class="fas fa-trash-alt" ></i>
+        </button>
+        </a>
+      `);
       }
-    });;
+    })
   }
 
   const loadProducts = (allProducts) => {
@@ -65,12 +120,30 @@ $(document).ready(function() {
     }).done((products) => {
       if (allProducts){
         for (product of products) {
-          $("<a>").text(product.name).appendTo($(".toBuy"));
+          $(".toBuy").append(`
+          <a>${product.name}
+          <button class = "changeButton">
+          <i class="fas fa-plus"></i>
+          </button>
+          <button class = "deleteButton" id ="products.${product.id}">
+          <i class="fas fa-trash-alt" ></i>
+          </button>
+          </a>
+        `);
         }
       } else {
-        $("<a>").text(products[products.length-1].name).appendTo($(".toBuy"));
+        $(".toBuy").append(`
+        <a>${products[products.length-1].name}
+        <button class = "changeButton">
+        <i class="fas fa-plus"></i>
+        </button>
+        <button class = "deleteButton" id ="products.${products[products.length-1].id}">
+        <i class="fas fa-trash-alt" ></i>
+        </button>
+        </a>
+      `);
       }
-    });
+    })
   }
 
   const loadMisc = (allMisc) => {
@@ -80,18 +153,37 @@ $(document).ready(function() {
     }).done((misc) => {
       if (allMisc){
         for (m of misc) {
-          $("<a>").text(m.name).appendTo($(".other"));
+          $(".other").append(`
+          <a>${m.name}
+          <button class = "changeButton">
+          <i class="fas fa-plus"></i>
+          </button>
+          <button class = "deleteButton" id ="misc.${m.id}">
+          <i class="fas fa-trash-alt" ></i>
+          </button>
+          </a>
+        `);
         }
       } else {
-        $("<a>").text(misc[misc.length-1].name).appendTo($(".other"));
+        $(".other").append(`
+        <a>${misc[misc.length-1].name}
+        <button class = "changeButton">
+        <i class="fas fa-plus"></i>
+        </button>
+        <button class = "deleteButton" id ="misc.${misc[misc.length-1].id}">
+        <i class="fas fa-trash-alt" ></i>
+        </button>
+        </a>
+      `);
       }
-    });
+    })
   }
 
   //------Nav Bar Button Toggles------//
 
   $(".books").click(function() {
     $(".toRead").slideToggle("slow");
+
   });
 
   $(".movies").click(function() {
@@ -190,6 +282,7 @@ $(document).ready(function() {
 
   })
 
+
   //------AJAX Function Calls-----//
 
   loadUsers(true);
@@ -198,6 +291,43 @@ $(document).ready(function() {
   loadRestaurants(true);
   loadProducts(true);
   loadMisc(true);
+
+    //------EDIT (UPDATE AND DELETE FROM LIST)-----//
+
+
+    $( document ).on( "click",".changeButton", function() {
+      console.log( "HI1");
+
+    });
+    //-------Delete button for the specific items in the
+    $( document ).on( "click",".deleteButton", function() {
+      const value = $(this).attr("id")
+      console.log( "id in html:", value);
+      $.post(`/edit/delete?input=${value}`)
+      if (value.includes("books")) {
+        $(".toRead").empty();
+        loadBooks(true)
+      }
+      if (value.includes("movies")) {
+        $(".toWatch").empty();
+        loadMovies(true)
+      }
+      if (value.includes("products")) {
+        $(".toBuy").empty();
+        loadProducts(true)
+      }
+      if (value.includes("restaurants")) {
+        $(".toEat").empty();
+        loadRestaurants(true)
+      }
+      if (value.includes("misc")) {
+        $(".other").empty();
+        loadMisc(true)
+      }
+    });
+
+
+
 });
 
 const mainFetcher = (search, object) => {
