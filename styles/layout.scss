@@ -1,5 +1,8 @@
 // See: https://sass-lang.com/
-
+body{
+  background-image: url(/images/background.jpg) ;
+  height:100vh
+}
 
 nav {
   display: flex;
@@ -95,4 +98,8 @@ nav {
 .fa-trash-alt:hover{
   height:50%;
   background-color: rgb(155, 155, 155);
+}
+
+.profile-view {
+ display: none;
 }

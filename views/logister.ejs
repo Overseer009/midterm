@@ -38,12 +38,12 @@
 <form method="POST" class = "login-form" action="/logister">
   <div class = "credentials">
      <p>Username:</p>
-     <textarea class = "username" name="username" placeholder="Enter username"></textarea>
+     <textarea class = "username" name="username" required placeholder="Enter username"></textarea>
   </div>
   <div class = "credentials">
      <p>Password:</p>
-     <textarea class = "password"  name="password" placeholder="Enter password"></textarea>
-     <input type = "submit" value ="log in"/>
+     <input type="password" class = "password" required  name="password" placeholder="Enter password"></input>
+     <input type = "submit" class="input-btn" value ="log in"/>
 
   </form>
 </div>
@@ -52,17 +52,17 @@
   <h2>Dont have an account? Register here</h2>
   <div class = "register-form">
   <p>Username:</p>
-  <textarea class = "username" name="username" placeholder="Enter username"></textarea>
+  <textarea class = "username" name="username" required placeholder="Enter username"></textarea>
   <p>Password:</p>
-  <textarea class = "password"  name="password" placeholder="Enter password"></textarea>
+  <input type="password" class = "password"  name="password" required placeholder="Enter password"></input>
    </div>
-  <input type = "submit" value ="Register"/>
+  <input type = "submit" class="input-btn register-form" value ="Register"/>
 </form>
 
-<input id = "show-register-btn" type = "submit" value ="Register"/>
+<input id = "show-register-btn" class="input-btn" type = "submit" value ="Register"/>
 </div>
 <h2 class ="register-form">Got an account? Login here</h2>
-<input id = "show-login-btn" type = "submit" value ="log in"/>
+<input id = "show-login-btn" class="input-btn" type = "submit" value ="log in"/>
 
 </body>
 

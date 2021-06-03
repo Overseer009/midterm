@@ -13,15 +13,14 @@ body {
   align-items: center;
   flex-direction: column;
 }
-input {
+.input-btn {
   width: 6em;
   height: 3em;
   background-color:hotpink;
   border-radius: 50%;
   border:0;
-
 }
-input:hover{
+.input-btn:hover{
   box-shadow: 3px 3px;
 }
 
@@ -46,3 +45,4 @@ h1{
 p {
   margin: 0.5em 0.5em
 }
+

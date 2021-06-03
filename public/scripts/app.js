@@ -236,6 +236,11 @@ $(document).ready(function() {
     $(".dropdown-content").slideToggle("slow");
   });
 
+  $(".show-profile-btn").click(function() {
+    $(".profile-view").slideToggle("slow");
+
+  });
+
   //------API Routes-----//
 
   $("#input").click(function() {
@@ -405,6 +410,12 @@ $(document).ready(function() {
     $("#show-register-btn").show()
     $(".login-form").show()
     $("#show-login-btn").hide()
+  })
+
+  $(".submit-profile").submit(function() {
+
+    alert("Successfully Updated Profile")
+
   })
 
 

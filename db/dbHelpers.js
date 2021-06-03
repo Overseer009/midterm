@@ -158,6 +158,19 @@ module.exports = (db) => {
       .query(stringQuery, [id])
       .then((data) => data.rows[0])
   }
+  const editProfile = (username, email, bio, id) => {
+  const stringQuery = `
+    UPDATE users
+    SET username = $1,
+     email = $2,
+     bio = $3
+     WHERE id = $4;
+`
+return db
+.query(stringQuery, [username,email,bio,id])
+.then((data) => console.log("UPDATED PROFILE!!!!"))
+
+}
 
 
   //------------------------------------------------------------
@@ -174,6 +187,7 @@ module.exports = (db) => {
     createUser,
     insertSearch,
     deleteOption,
-    fetchItemById
+    fetchItemById,
+    editProfile
   };
 };

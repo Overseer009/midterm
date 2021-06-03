@@ -47,6 +47,7 @@
       <form method="POST" action="/logout">
         <input type = "submit" value ="Logout"/>
       </form>
+      <input class = "show-profile-btn"type = "submit" value ="edit profile"/>
     </div>
 
     <div class="listIcons">
@@ -85,6 +86,26 @@
     <div class="users"></div>
 
   </div>
+
+  <div class ="profile-form">
+
+  </div>
+
+
+  <form method="POST" class="submit-profile" action="/profile">
+    <div class="profile-view">
+      <h2>Profile</h2>
+      <div class = "profile-form">
+        <p>Username:</p>
+        <textarea class = "profile-username" name="username" required ></textarea>
+        <p>Email:</p>
+        <input type = "email" class = "profile-email" name="email" required ></input>
+        <p>Bio:</p>
+        <textarea  class = "profile-bio"  name="bio" required ></textarea>
+      </div>
+      <input type = "submit" class="input-btn profile-form" value ="Save"/>
+    </div>
+  </form>
 
 </body>
 

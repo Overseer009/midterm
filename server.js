@@ -56,8 +56,8 @@ const miscRoutes = require("./db/dbCategoryRoutes/misc");
 const logisterRoutes = require("./routes/logister");
 const inputRoutes = require("./routes/input")
 const editRoutes = require("./routes/edit")
-//
 const apiRoutes = require("./routes/apis")
+const profileRoutes = require("./routes/profile")
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -70,6 +70,7 @@ app.use("/api/misc", miscRoutes(dbHelpers));
 app.use("/", logisterRoutes(dbHelpers));
 app.use("/input", inputRoutes(dbHelpers));
 app.use("/edit", editRoutes(dbHelpers));
+app.use("/profile", profileRoutes(dbHelpers))
 
 //-----API routes-----//
 app.use("/api/external", apiRoutes)
