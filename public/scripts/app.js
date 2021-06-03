@@ -388,6 +388,25 @@ $(document).ready(function() {
 
   });
 
+  $(".register-form").hide()
+  $("#show-login-btn").hide()
+  $(document).on("click", "#show-register-btn", function() {
+
+
+    $(".register-form").show()
+    $("#show-register-btn").hide()
+    $(".login-form").hide()
+    $("#show-login-btn").show()
+  })
+
+  $(document).on("click", "#show-login-btn", function() {
+
+    $(".register-form").hide()
+    $("#show-register-btn").show()
+    $(".login-form").show()
+    $("#show-login-btn").hide()
+  })
+
 
 
 });

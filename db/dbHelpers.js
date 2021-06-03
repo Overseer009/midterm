@@ -70,7 +70,7 @@ module.exports = (db) => {
 
   const getMiscForUser = () => {
     // const stringQuery = `
-    //   SELECT * FROM misc
+    //   SELECT * FROM miscs
     //   JOIN users ON users.id = user_id
     //   WHERE users.id = $1;`;
     // const id = [req.params.id];

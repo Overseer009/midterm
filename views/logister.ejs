@@ -30,12 +30,12 @@
 </head>
 
 <body>
-  <h1>Porject Name  &#128512</h1>
+  <h1>Project Name  &#128512</h1>
   <div class = "form">
 
 
 
-<form method="POST" action="/logister">
+<form method="POST" class = "login-form" action="/logister">
   <div class = "credentials">
      <p>Username:</p>
      <textarea class = "username" name="username" placeholder="Enter username"></textarea>
@@ -50,15 +50,19 @@
 
 <form method="POST" action="/register">
   <h2>Dont have an account? Register here</h2>
+  <div class = "register-form">
   <p>Username:</p>
   <textarea class = "username" name="username" placeholder="Enter username"></textarea>
   <p>Password:</p>
   <textarea class = "password"  name="password" placeholder="Enter password"></textarea>
+   </div>
   <input type = "submit" value ="Register"/>
 </form>
+
+<input id = "show-register-btn" type = "submit" value ="Register"/>
 </div>
-
-
+<h2 class ="register-form">Got an account? Login here</h2>
+<input id = "show-login-btn" type = "submit" value ="log in"/>
 
 </body>
 
