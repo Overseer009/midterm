@@ -77,7 +77,7 @@ module.exports = (db) => {
 
     const stringQuery = `
     SELECT * FROM miscs;
-  `
+    `
     return db
       .query(stringQuery)
       .then((data) => data.rows)
