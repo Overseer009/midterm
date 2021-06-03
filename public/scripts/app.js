@@ -19,7 +19,7 @@ $(document).ready(function() {
       method: "GET",
       url: "/api/books",
     }).done((books) => {
-      if (allBooks){
+      if (allBooks) {
         for (book of books) {
           $(".toRead").append(`
           <a>${book.name}
@@ -37,14 +37,14 @@ $(document).ready(function() {
         }
       } else {
         $(".toRead").append(`
-        <a >${books[books.length-1].name}
+        <a >${books[books.length - 1].name}
           <div class = "dropdown">
-            <button class = "updateButton" id="update.books.${books[books.length-1].id}">
+            <button class = "updateButton" id="update.books.${books[books.length - 1].id}">
               <i class="fas fa-plus"></i>
             </button>
-            <div class = "book${books[books.length-1].id} content"></div>
+            <div class = "book${books[books.length - 1].id} content"></div>
           </div>
-          <button class = "deleteButton" id="delete.books.${books[books.length-1].id}">
+          <button class = "deleteButton" id="delete.books.${books[books.length - 1].id}">
             <i class="fas fa-trash-alt" ></i>
           </button>
         </a>
@@ -58,7 +58,7 @@ $(document).ready(function() {
       method: "GET",
       url: "/api/movies",
     }).done((movies) => {
-      if (allMovies){
+      if (allMovies) {
         for (movie of movies) {
           $(".toWatch").append(`
           <a >${movie.name}
@@ -76,14 +76,14 @@ $(document).ready(function() {
         }
       } else {
         $(".toWatch").append(`
-        <a >${movies[movies.length-1].name}
+        <a >${movies[movies.length - 1].name}
           <div class = "dropdown">
-            <button class = "updateButton" id="update.movies.${movies[movies.length-1].id}">
+            <button class = "updateButton" id="update.movies.${movies[movies.length - 1].id}">
               <i class="fas fa-plus"></i>
             </button>
-            <div class = "movie${movies[movies.length-1].id} content"></div>
+            <div class = "movie${movies[movies.length - 1].id} content"></div>
           </div>
-          <button class = "deleteButton" id ="delete.movies.${movies[movies.length-1].id}">
+          <button class = "deleteButton" id ="delete.movies.${movies[movies.length - 1].id}">
             <i class="fas fa-trash-alt" ></i>
           </button>
         </a>
@@ -97,7 +97,7 @@ $(document).ready(function() {
       method: "GET",
       url: "/api/restaurants",
     }).done((restaurants) => {
-      if (allRestaurants){
+      if (allRestaurants) {
         for (restaurant of restaurants) {
           $(".toEat").append(`
           <a >${restaurant.name}
@@ -115,14 +115,14 @@ $(document).ready(function() {
         }
       } else {
         $(".toEat").append(`
-        <a >${restaurants[restaurants.length-1].name}
+        <a >${restaurants[restaurants.length - 1].name}
           <div class = "dropdown">
-            <button class = "updateButton" id="update.restaurants.${restaurants[restaurants.length-1].id}">
+            <button class = "updateButton" id="update.restaurants.${restaurants[restaurants.length - 1].id}">
               <i class="fas fa-plus"></i>
             </button>
-            <div class = "restaurant${restaurants[restaurants.length-1].id} content"></div>
+            <div class = "restaurant${restaurants[restaurants.length - 1].id} content"></div>
           </div>
-          <button class = "deleteButton" id="delete.restaurants.${restaurants[restaurants.length-1].id}">
+          <button class = "deleteButton" id="delete.restaurants.${restaurants[restaurants.length - 1].id}">
             i class="fas fa-trash-alt" ></i>
           </button>
         </a>
@@ -136,7 +136,7 @@ $(document).ready(function() {
       method: "GET",
       url: "/api/products",
     }).done((products) => {
-      if (allProducts){
+      if (allProducts) {
         for (product of products) {
           $(".toBuy").append(`
           <a>${product.name}
@@ -154,14 +154,14 @@ $(document).ready(function() {
         }
       } else {
         $(".toBuy").append(`
-        <a >${products[products.length-1].name}
+        <a >${products[products.length - 1].name}
           <div class = "dropdown">
-            <button class = "updateButton" id="update.products.${products[products.length-1].id}">
+            <button class = "updateButton" id="update.products.${products[products.length - 1].id}">
               <i class="fas fa-plus"></i>
             </button>
-            <div class = "product${products[products.length-1].id} content"></div>
+            <div class = "product${products[products.length - 1].id} content"></div>
           </div>
-          <button class = "deleteButton" id="delete.products.${products[products.length-1].id}">
+          <button class = "deleteButton" id="delete.products.${products[products.length - 1].id}">
             <i class="fas fa-trash-alt" ></i>
           </button>
         </a>
@@ -174,18 +174,18 @@ $(document).ready(function() {
     $.ajax({
       method: "GET",
       url: "/api/misc",
-    }).done((misc) => {
-      if (allMisc){
-        for (m of misc) {
+    }).done((miscs) => {
+      if (allMisc) {
+        for (misc of miscs) {
           $(".other").append(`
-          <a>${m.name}
+          <a>${misc.name}
             <div class = "dropdown">
-              <button class = "updateButton" id ="update.misc.${m.id}">
+              <button class = "updateButton" id ="update.miscs.${misc.id}">
                 <i class="fas fa-plus"></i>
               </button>
-              <div class = "m${m.id} content"></div>
+              <div class = "misc${misc.id} content"></div>
             </div>
-            <button class = "deleteButton" id ="delete.misc.${m.id}">
+            <button class = "deleteButton" id ="delete.miscs.${misc.id}">
               <i class="fas fa-trash-alt" ></i>
             </button>
           </a>
@@ -193,14 +193,14 @@ $(document).ready(function() {
         }
       } else {
         $(".other").append(`
-        <a>${misc[misc.length-1].name}
+        <a>${miscs[miscs.length - 1].name}
           <div class = "dropdown">
-            <button class = "updateButton" id="update.misc.${misc[misc.length-1].id}">
+            <button class = "updateButton" id="update.miscs.${miscs[miscs.length - 1].id}">
               <i class="fas fa-plus"></i>
             </button>
-            <div class = "m${misc[misc.length-1].id} content"></div>
+            <div class = "misc${miscs[miscs.length - 1].id} content"></div>
           </div>
-          <button class = "deleteButton" id ="delete.misc.${misc[misc.length-1].id}">
+          <button class = "deleteButton" id ="delete.miscs.${miscs[miscs.length - 1].id}">
             <i class="fas fa-trash-alt" ></i>
           </button>
         </a>
@@ -241,17 +241,17 @@ $(document).ready(function() {
   $("#input").click(function() {
     //------Endpoints/Keys-----//
     const userInput = $(".userText")
-    .val()
-    .trim()
-    .toLowerCase()
-    .replace(/\s/g, '+');
+      .val()
+      .trim()
+      .toLowerCase()
+      .replace(/\s/g, '+');
 
     let listObject = {};
 
 
 
     $.get(`/api/external/products?input=${userInput}`).then((data) => {
-       let products
+      let products
       if (JSON.parse(data).search_results.length === 0) {
         products = undefined
       } else {
@@ -292,9 +292,9 @@ $(document).ready(function() {
                 console.log("HI")
                 console.log("input Value:", inputValue[0])
                 console.log("data:", data);
-                if (inputValue[0] === "books"){
+                if (inputValue[0] === "books") {
                   loadBooks(false);
-                } else if (inputValue[0] === "movies"){
+                } else if (inputValue[0] === "movies") {
                   loadMovies(false);
                 } else if (inputValue[0] === "restaurants") {
                   loadRestaurants(false);
@@ -308,7 +308,7 @@ $(document).ready(function() {
       })
     })
 
-  $(".userText").val("");
+    $(".userText").val("");
 
   })
 
@@ -322,55 +322,82 @@ $(document).ready(function() {
   loadProducts(true);
   loadMisc(true);
 
-    //------EDIT (UPDATE AND DELETE FROM LIST)-----//
-    $( document ).on( "click",".updateButton", function() {
-      const inputValue = $(this).attr("id")
-      const appendValue = inputValue.slice(7, inputValue.length).split("s.").join("")
-      $(`.${appendValue}`).empty()
-      console.log(appendValue)
-      $(`.${appendValue}`).append(`
-        <p>asd</p>
-        <p>asd</p>
-        <p>asd</p>
+  //------EDIT (UPDATE AND DELETE FROM LIST)-----//
+  let inputValue = ""
+  $(document).on("click", ".updateButton", function() {
+    inputValue = $(this).attr("id")
+    const appendValue = inputValue.slice(7, inputValue.length).split("s.").join("")
+    $(`.${appendValue}`).empty()
+    const option = filterCategory(inputValue)
+    $(`.${appendValue}`).append(`
+        <button type="button" class="change" id="cat.${option[0]}">${option[0]}</button>
+        <button type="button" class="change" id="cat.${option[1]}">${option[1]}</button>
+        <button type="button" class="change" id="cat.${option[2]}">${option[2]}</button>
+        <button type="button" class="change" id="cat.${option[3]}">${option[3]}</button>
         `
-      ).slideToggle("slow")
-
-
-      $.post(`/edit/update?input=${inputValue}`)
-      console.log( "HI1");
-      // if (value.includes("books")) {
-
-      // }
-
-    });
-
-    //-------Delete button for the specific items in the
-    $( document ).on( "click",".deleteButton", function() {
-      const value = $(this).attr("id")
-
-      $.post(`/edit/delete?input=${value}`)
-      if (value.includes("books")) {
-        $(".toRead").empty();
+    ).slideToggle("slow")
+  });
+  $(document).on("click", ".change", function() {
+    const newInput = $(this).attr("id");
+    console.log(newInput);
+    const inputArray = [newInput, inputValue]
+    $.post(`/edit/update?input=${inputArray}`)
+      .then(() => {
+        $(".toRead").empty()
         loadBooks(true)
-      } else if (value.includes("movies")) {
+
         $(".toWatch").empty();
         loadMovies(true)
-      } else if (value.includes("products")) {
+
         $(".toBuy").empty();
         loadProducts(true)
-      } else if (value.includes("restaurants")) {
+
         $(".toEat").empty();
         loadRestaurants(true)
-      } else if (value.includes("misc")) {
+
         $(".other").empty();
         loadMisc(true)
-      }
+      })
+  })
+  //-------Delete button for the specific items in the
+  $(document).on("click", ".deleteButton", function() {
+    const value = $(this).attr("id")
+    $.post(`/edit/delete?input=${value}`)
+      .done(() => {
+        if (value.includes("books")) {
+          $(".toRead").empty()
+          loadBooks(true)
+        }
+        if (value.includes("movies")) {
+          $(".toWatch").empty();
+          loadMovies(true)
+        }
+        if (value.includes("products")) {
+          $(".toBuy").empty();
+          loadProducts(true)
+        }
+        if (value.includes("restaurants")) {
+          $(".toEat").empty();
+          loadRestaurants(true)
+        }
+        if (value.includes("misc")) {
+          $(".other").empty();
+          loadMisc(true)
+        }
+      })
 
-    });
+  });
 
 
 
 });
+
+const filterCategory = (value) => {
+  const newValue = value.split(".");
+  let array = ['movies', 'restaurants', 'books', 'products', 'miscs']
+  const result = array.filter(word => word !== (newValue[1]));
+  return result
+}
 
 const mainFetcher = (search, object) => {
   let listArray = Object.entries(object)

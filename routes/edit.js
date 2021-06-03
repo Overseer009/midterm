@@ -14,20 +14,25 @@ module.exports = (dbHelpers) => {
     res.json("HEYHEY");
   })
 
-  router.post("/update", (req,res) => {
+  router.post("/update", (req, res) => {
     const cookie = req.session.user_id;
-
-    // inputValue[1] = tablename inputValue[2] = id for item
-    const inputValue = (req.query.input).split(".");
-    dbHelpers.fetchItemById(inputValue[1],inputValue[2]).then(
-      (data)=>{
+    const newInput = (req.query.input).split(",")
+    const newTableName = newInput[0].split("cat.").join("")
+    const currentInfo = newInput[1].split("update.").join("").split(".")
+    currentInfo[1] = parseInt(currentInfo[1], 10)
+    dbHelpers.fetchItemById(currentInfo[0], currentInfo[1]).then(
+      (data) => {
+        console.log("Inside Post Update: ", data)
         const itemName = data.name
-        dbHelpers.insertSearch(inputValue[1], itemName, cookie)
-    })
+        console.log("name:", itemName);
+        dbHelpers.insertSearch(newTableName, itemName, cookie)
+          .then(() => {
+            dbHelpers.deleteOption(currentInfo[0], currentInfo[1])
+              .then(() => res.json("UPDATE ROUTE WORKING!!!!!"))
 
-    // dbHelpers.deleteOption(inputValue[1], inputValue[2]);
+          })
+      })
 
-    res.json("UPDATE ROUTE WORKING!!!!!");
   })
 
   return router;
