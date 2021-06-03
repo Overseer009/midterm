@@ -23,36 +23,30 @@ $(document).ready(function() {
         for (book of books) {
           $(".toRead").append(`
           <a>${book.name}
-          <div class = "dropdown">
-          <button class = "updateButton" id="update.books.${book.id}">
-          <i class="fas fa-plus"></i>
-          </button>
-          <div class = "book${book.id} content">
-          </div>
-          </div>
-          <button class = "deleteButton" id ="delete.books.${book.id}">
-          <i class="fas fa-trash-alt" ></i>
-          </button>
+            <div class = "dropdown">
+              <button class = "updateButton" id="update.books.${book.id}">
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class = "book${book.id} content"></div>
+            </div>
+            <button class = "deleteButton" id ="delete.books.${book.id}">
+              <i class="fas fa-trash-alt" ></i>
+            </button>
           </a>
         `);
         }
       } else {
         $(".toRead").append(`
         <a >${books[books.length-1].name}
-
-
-        <div class = "dropdown">
-        <button class = "updateButton" id="update.books.${books[books.length-1].id}">
-        <i class="fas fa-plus"></i>
-        </button>
-        <div class = "book${books[books.length-1].id} content">
-        </div>
-        </div>
-
-
-        <button class = "deleteButton" id="delete.books.${books[books.length-1].id}">
-        <i class="fas fa-trash-alt" ></i>
-        </button>
+          <div class = "dropdown">
+            <button class = "updateButton" id="update.books.${books[books.length-1].id}">
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class = "book${books[books.length-1].id} content"></div>
+          </div>
+          <button class = "deleteButton" id="delete.books.${books[books.length-1].id}">
+            <i class="fas fa-trash-alt" ></i>
+          </button>
         </a>
       `);
       }
@@ -68,37 +62,30 @@ $(document).ready(function() {
         for (movie of movies) {
           $(".toWatch").append(`
           <a >${movie.name}
-
-          <div class = "dropdown">
-          <button class = "updateButton" id="update.movies.${movie.id}">
-          <i class="fas fa-plus"></i>
-          </button>
-          <div class = "movie${movie.id} content">
-          </div>
-          </div>
-
-          <button class = "deleteButton" id ="delete.movies.${movie.id}">
-          <i class="fas fa-trash-alt" ></i>
-          </button>
+            <div class = "dropdown">
+              <button class = "updateButton" id="update.movies.${movie.id}">
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class = "movie${movie.id} content"></div>
+            </div>
+            <button class = "deleteButton" id ="delete.movies.${movie.id}">
+              <i class="fas fa-trash-alt" ></i>
+            </button>
           </a>
         `);
         }
       } else {
         $(".toWatch").append(`
-
-
         <a >${movies[movies.length-1].name}
-        <div class = "dropdown">
-        <button class = "updateButton" id="update.movies.${movies[movies.length-1].id}">
-        <i class="fas fa-plus"></i>
-        </button>
-        <div class = "movie${movies[movies.length-1].id} content">
-        </div>
-        </div>
-
-        <button class = "deleteButton" id ="delete.movies.${movies[movies.length-1].id}">
-        <i class="fas fa-trash-alt" ></i>
-        </button>
+          <div class = "dropdown">
+            <button class = "updateButton" id="update.movies.${movies[movies.length-1].id}">
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class = "movie${movies[movies.length-1].id} content"></div>
+          </div>
+          <button class = "deleteButton" id ="delete.movies.${movies[movies.length-1].id}">
+            <i class="fas fa-trash-alt" ></i>
+          </button>
         </a>
       `);
       }
@@ -114,38 +101,30 @@ $(document).ready(function() {
         for (restaurant of restaurants) {
           $(".toEat").append(`
           <a >${restaurant.name}
-
-          <div class = "dropdown">
-          <button class = "updateButton" id="update.restaurants.${restaurant.id}">
-          <i class="fas fa-plus"></i>
-          </button>
-          <div class = "restaurant${restaurant.id} content">
-          </div>
-          </div>
-
-          <button class = "deleteButton" id="delete.restaurants.${restaurant.id}">
-          <i class="fas fa-trash-alt" ></i>
-          </button>
+            <div class = "dropdown">
+              <button class = "updateButton" id="update.restaurants.${restaurant.id}">
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class = "restaurant${restaurant.id} content"></div>
+            </div>
+            <button class = "deleteButton" id="delete.restaurants.${restaurant.id}">
+              <i class="fas fa-trash-alt" ></i>
+            </button>
           </a>
         `);
         }
       } else {
         $(".toEat").append(`
         <a >${restaurants[restaurants.length-1].name}
-
-        <div class = "dropdown">
-        <button class = "updateButton" id="update.restaurants.${restaurants[restaurants.length-1].id}">
-        <i class="fas fa-plus"></i>
-        </button>
-        <div class = "restaurant${restaurants[restaurants.length-1].id} content">
-        </div>
-        </div>
-
-
-
-        <button class = "deleteButton" id="delete.restaurants.${restaurants[restaurants.length-1].id}">
-        <i class="fas fa-trash-alt" ></i>
-        </button>
+          <div class = "dropdown">
+            <button class = "updateButton" id="update.restaurants.${restaurants[restaurants.length-1].id}">
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class = "restaurant${restaurants[restaurants.length-1].id} content"></div>
+          </div>
+          <button class = "deleteButton" id="delete.restaurants.${restaurants[restaurants.length-1].id}">
+            i class="fas fa-trash-alt" ></i>
+          </button>
         </a>
       `);
       }
@@ -161,34 +140,30 @@ $(document).ready(function() {
         for (product of products) {
           $(".toBuy").append(`
           <a>${product.name}
-          <div class = "dropdown">
-          <button class = "updateButton" id="update.products.${product.id}">
-          <i class="fas fa-plus"></i>
-          </button>
-          <div class = "product${product.id} content">
-          </div>
-          </div>
-
-          <button class = "deleteButton" id="delete.products.${product.id}">
-          <i class="fas fa-trash-alt" ></i>
-          </button>
+            <div class = "dropdown">
+              <button class = "updateButton" id="update.products.${product.id}">
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class = "product${product.id} content"></div>
+            </div>
+            <button class = "deleteButton" id="delete.products.${product.id}">
+              <i class="fas fa-trash-alt" ></i>
+            </button>
           </a>
         `);
         }
       } else {
         $(".toBuy").append(`
         <a >${products[products.length-1].name}
-        <div class = "dropdown">
-        <button class = "updateButton" id="update.products.${products[products.length-1].id}">
-        <i class="fas fa-plus"></i>
-        </button>
-        <div class = "product${products[products.length-1].id} content">
-        </div>
-        </div>
-
-        <button class = "deleteButton" id="delete.products.${products[products.length-1].id}">
-        <i class="fas fa-trash-alt" ></i>
-        </button>
+          <div class = "dropdown">
+            <button class = "updateButton" id="update.products.${products[products.length-1].id}">
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class = "product${products[products.length-1].id} content"></div>
+          </div>
+          <button class = "deleteButton" id="delete.products.${products[products.length-1].id}">
+            <i class="fas fa-trash-alt" ></i>
+          </button>
         </a>
       `);
       }
@@ -203,35 +178,31 @@ $(document).ready(function() {
       if (allMisc){
         for (m of misc) {
           $(".other").append(`
-          <a >${m.name}
-
-          <div class = "dropdown">
-          <button class = "updateButton" id ="update.misc.${m.id}">
-          <i class="fas fa-plus"></i>
-          </button>
-          <div class = "m${m.id} content">
-          </div>
-          </div>
-
-          <button class = "deleteButton" id ="delete.misc.${m.id}">
-          <i class="fas fa-trash-alt" ></i>
-          </button>
+          <a>${m.name}
+            <div class = "dropdown">
+              <button class = "updateButton" id ="update.misc.${m.id}">
+                <i class="fas fa-plus"></i>
+              </button>
+              <div class = "m${m.id} content"></div>
+            </div>
+            <button class = "deleteButton" id ="delete.misc.${m.id}">
+              <i class="fas fa-trash-alt" ></i>
+            </button>
           </a>
         `);
         }
       } else {
         $(".other").append(`
-        <a >${misc[misc.length-1].name}
-        <div class = "dropdown">
-        <button class = "updateButton" id="update.misc.${misc[misc.length-1].id}">
-        <i class="fas fa-plus"></i>
-        </button>
-        <div class = "m${misc[misc.length-1].id} content">
-        </div>
-        </div>
-        <button class = "deleteButton" id ="delete.misc.${misc[misc.length-1].id}">
-        <i class="fas fa-trash-alt" ></i>
-        </button>
+        <a>${misc[misc.length-1].name}
+          <div class = "dropdown">
+            <button class = "updateButton" id="update.misc.${misc[misc.length-1].id}">
+              <i class="fas fa-plus"></i>
+            </button>
+            <div class = "m${misc[misc.length-1].id} content"></div>
+          </div>
+          <button class = "deleteButton" id ="delete.misc.${misc[misc.length-1].id}">
+            <i class="fas fa-trash-alt" ></i>
+          </button>
         </a>
       `);
       }
@@ -352,8 +323,6 @@ $(document).ready(function() {
   loadMisc(true);
 
     //------EDIT (UPDATE AND DELETE FROM LIST)-----//
-
-
     $( document ).on( "click",".updateButton", function() {
       const inputValue = $(this).attr("id")
       const appendValue = inputValue.slice(7, inputValue.length).split("s.").join("")
@@ -383,23 +352,20 @@ $(document).ready(function() {
       if (value.includes("books")) {
         $(".toRead").empty();
         loadBooks(true)
-      }
-      if (value.includes("movies")) {
+      } else if (value.includes("movies")) {
         $(".toWatch").empty();
         loadMovies(true)
-      }
-      if (value.includes("products")) {
+      } else if (value.includes("products")) {
         $(".toBuy").empty();
         loadProducts(true)
-      }
-      if (value.includes("restaurants")) {
+      } else if (value.includes("restaurants")) {
         $(".toEat").empty();
         loadRestaurants(true)
-      }
-      if (value.includes("misc")) {
+      } else if (value.includes("misc")) {
         $(".other").empty();
         loadMisc(true)
       }
+
     });
 
 
