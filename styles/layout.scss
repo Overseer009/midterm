@@ -1,7 +1,9 @@
 // See: https://sass-lang.com/
 body{
   background-image: url(/images/background.jpg) ;
-  height:100vh
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 nav {
@@ -10,7 +12,9 @@ nav {
   flex-direction: column;
   height: 150px;
   width: 100%;
-  background-color: hotpink;
+  background-color: lightslategray;
+  opacity: 0.7;
+
 }
 
 .input-group {
@@ -36,6 +40,8 @@ nav {
 
 .icon {
   font-size: 30px;
+  opacity: 1;
+  color: white;
 }
 
 .lists {
@@ -59,7 +65,7 @@ nav {
 }
 
 .dropdown:hover .button {
-  background-color: red;
+  background-color: rgba(255, 0, 0, 0.411);
 }
 
 .content {
@@ -102,4 +108,39 @@ nav {
 
 .profile-view {
  display: none;
+}
+
+.userText {
+  resize: none;
+  background-color: transparent;
+  width: 30em;
+  border: none;
+  border-bottom: 3px rgba(0, 0, 0, 0.397) solid;
+  opacity: 1;
+  font-size: 1.5em;
+  height: 65%;
+}
+
+#input {
+  height: 65%;
+  background-color: transparent;
+  border: none;
+}
+
+#input:hover {
+  cursor: pointer;
+}
+
+.userText:focus{
+  outline: none;
+}
+
+.fa-clipboard-check {
+  font-size: 45px;
+}
+
+#edit-profile {
+  background-color: transparent;
+  border: none;
+
 }
