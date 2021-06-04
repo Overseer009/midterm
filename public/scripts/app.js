@@ -7,7 +7,7 @@ $(document).ready(function() {
       method: "GET",
       url: "/api/users",
     }).done((users) => {
-      console.log("USERSSSSSSSS",users)
+      console.log("USERSSSSSSSS", users)
       $(".users").append(`
       <h2>Welcome, ${users.username}</h2>
       `)
@@ -36,7 +36,7 @@ $(document).ready(function() {
                 <button class = "deleteButton" id ="delete.books.${book.id}">
                 <i class="fas fa-trash-alt" ></i>
               </button>
- </div>
+            </div>
             </div>
 
           </a>
@@ -53,10 +53,10 @@ $(document).ready(function() {
             </button>
             <div class = "book${books[books.length - 1].id} content"></div>
 
-          <button class = "deleteButton" id="delete.books.${books[books.length - 1].id}">
-            <i class="fas fa-trash-alt" ></i>
-          </button>
-          </div>
+            <button class = "deleteButton" id="delete.books.${books[books.length - 1].id}">
+              <i class="fas fa-trash-alt" ></i>
+            </button>
+            </div>
           </div>
         </a>
       `);
