@@ -10,7 +10,6 @@ const router = express.Router();
 
 module.exports = (dbHelpers) => {
   router.get("/", (req, res) => {
-    console.log("user id:", req.session.user_id);
     dbHelpers
       .getUsers(req.session.user_id)
       .then((users) => {

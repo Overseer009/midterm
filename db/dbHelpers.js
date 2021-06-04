@@ -15,77 +15,61 @@ module.exports = (db) => {
   };
 
   //--------------------------------------------------------------
-  const getBooksForUser = () => {
+  const getBooksForUser = (id) => {
 
-    // const id = [req.session.user_id];
     const stringQuery = `
-      SELECT * FROM books
+    SELECT * FROM books
+    WHERE user_id = $1;
       `;
 
     return db
-      .query(stringQuery)
+      .query(stringQuery, [id])
       .then((data) => data.rows)
   };
   //------------------------------------------------------------
-  const getMoviesForUser = () => {
-    // const stringQuery = `
-    //   SELECT * FROM movies
-    //   JOIN users ON users.id = user_id
-    //   WHERE users.id = $1;`;
-    // const id = [req.params.id];
+  const getMoviesForUser = (id) => {
 
     const stringQuery = `
-    SELECT * FROM movies;
-  `
+      SELECT * FROM movies
+      WHERE user_id = $1;
+      `
 
     return db
-      .query(stringQuery)
+      .query(stringQuery, [id])
       .then((data) => data.rows)
   };
   //------------------------------------------------------------
-  const getRestaurantsForUser = () => {
-    // const stringQuery = `
-    //     SELECT * FROM restaurants
-    //     JOIN users ON users.id = user_id
-    //      WHERE users.id = $1;`;
-    //     const id = [req.params.id];
-
-    const stringQuery = `SELECT * FROM restaurants`
-
-    return db
-      .query(stringQuery)
-      .then((data) => data.rows)
-  };
-  //------------------------------------------------------------
-
-  const getProductsForUser = () => {
-    // const stringQuery = `
-    //   SELECT * FROM products
-    //   JOIN users ON users.id = user_id
-    //   WHERE users.id = $1;`;
-    // const id = [req.params.id];
+  const getRestaurantsForUser = (id) => {
 
     const stringQuery = `
-    SELECT * FROM products;
+    SELECT * FROM restaurants
+    WHERE user_id = $1;`;
+
+    return db
+      .query(stringQuery, [id])
+      .then((data) => data.rows)
+  };
+  //------------------------------------------------------------
+
+  const getProductsForUser = (id) => {
+
+    const stringQuery = `
+    SELECT * FROM products
+    WHERE user_id = $1;
   `
     return db
-      .query(stringQuery)
+      .query(stringQuery, [id])
       .then((data) => data.rows)
   };
   //------------------------------------------------------------
 
-  const getMiscForUser = () => {
-    // const stringQuery = `
-    //   SELECT * FROM miscs
-    //   JOIN users ON users.id = user_id
-    //   WHERE users.id = $1;`;
-    // const id = [req.params.id];
-
+  const getMiscForUser = (id) => {
     const stringQuery = `
-    SELECT * FROM miscs;
+      SELECT * FROM miscs
+      WHERE user_id = $1;
     `
     return db
-      .query(stringQuery)
+      .query(stringQuery, [id])
       .then((data) => data.rows)
   };
 
