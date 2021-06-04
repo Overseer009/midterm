@@ -8,6 +8,8 @@ module.exports = (dbHelpers) => {
   router.post("/", (req, res) => {
     const cookie = req.session.user_id
     const inputValue = (req.query.input).split(",")
+    console.log("Route cookie:", cookie);
+    console.log("route value:", inputValue);
 
     dbHelpers.insertSearch(inputValue[0], inputValue[1], cookie).then(() => res.json("success"))
 

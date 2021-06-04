@@ -317,22 +317,40 @@ $(document).ready(function() {
             listObject.products = products
             listObject.restaurants = restaurants
 
+
+
+
+
+
+
             console.log("list:", listObject);
-            const inputValue = mainFetcher($(".userText").val(), listObject)
+            console.log("userInput:", userInput)
+            const improvedInput = userInput.split("+").join(" ")
+            console.log("improved:", improvedInput);
+            // const testValue = ""
+            let inputValue = mainFetcher(improvedInput, listObject)
+            console.log("OG input value", inputValue);
+            if (inputValue === undefined) {
+              const miscArray = ["miscs", improvedInput]
+              inputValue = miscArray.join(",").replace(/\s/g, '+')
+            }
+            console.log("input Value:      ", inputValue)
 
             $.post(`/input?input=${inputValue}`).then(
               (data) => {
-                console.log("HI")
-                console.log("input Value:", inputValue[0])
-                console.log("data:", data);
-                if (inputValue[0] === "books") {
+
+               const arrayValue = inputValue.split(",")
+                console.log("inside input Value:", arrayValue)
+                if (arrayValue[0] === "books") {
                   loadBooks(false);
-                } else if (inputValue[0] === "movies") {
+                } else if (arrayValue[0] === "movies") {
                   loadMovies(false);
-                } else if (inputValue[0] === "restaurants") {
+                } else if (arrayValue[0] === "restaurants") {
                   loadRestaurants(false);
-                } else if (inputValue[0] === "products") {
+                } else if (arrayValue[0] === "products") {
                   loadProducts(false);
+                } else if (arrayValue[0] === "miscs") {
+                  loadMisc(false);
                 }
               }
             )
@@ -460,15 +478,24 @@ const filterCategory = (value) => {
 }
 
 const mainFetcher = (search, object) => {
-  let listArray = Object.entries(object)
-  for (const choice of listArray) {
+  let listArray = Object.entries(object);
+  let capSearch = search.split(" ").map((words => words.charAt(0).toUpperCase() + words.slice(1)))
+  capSearch = capSearch.join(" ")
+  for (let choice of listArray) {
+    if (choice[1] === capSearch) {
+      return choice.join(",").replace(/\s/g, '+')
+    }
     if (choice[1] !== undefined) {
-      if (choice[1].includes(search)) {
-        //return the list name and the thing name
-        return choice
+      const capChoice = choice[1].split(" ").map((words => words.charAt(0).toUpperCase() + words.slice(1)))
+      if (capChoice.join(" ") !== capSearch) {
+        for (let i = 0; i < capSearch.length; i++) {
+          if(capChoice.join(" ").includes(capSearch[i],) ) {
+            return choice.join(",").replace(/\s/g, '+')
+          }
+        }
+      } else {
+        return choice.join(",").replace(/\s/g, '+')
       }
     }
   }
-  // go to misc
-  return search
 }
