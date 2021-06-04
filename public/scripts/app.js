@@ -7,10 +7,12 @@ $(document).ready(function() {
       method: "GET",
       url: "/api/users",
     }).done((users) => {
-      for (user of users) {
-        $("<a>").text(user.username).appendTo($(".users"));
+      console.log("USERSSSSSSSS",users)
+      $(".users").append(`
+      <h2>Welcome, ${users.username}</h2>
+      `)
 
-      }
+
     });
   }
 
@@ -402,6 +404,7 @@ $(document).ready(function() {
     $("#show-register-btn").hide()
     $(".login-form").hide()
     $("#show-login-btn").show()
+    $(".register-line").hide()
   })
 
   $(document).on("click", "#show-login-btn", function() {
@@ -410,6 +413,7 @@ $(document).ready(function() {
     $("#show-register-btn").show()
     $(".login-form").show()
     $("#show-login-btn").hide()
+    $(".register-line").show()
   })
 
   $(".submit-profile").submit(function() {

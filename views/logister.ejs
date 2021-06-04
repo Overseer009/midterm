@@ -9,13 +9,14 @@
     integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+
   <!--CSS and SCSS-->
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
   <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
   <link rel="stylesheet" href="/styles/logister.css" type="text/css" />
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@100;300&display=swap" rel="stylesheet">
   <!--jQuery-->
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
 
@@ -30,7 +31,7 @@
 </head>
 
 <body>
-  <h1>Project Name  &#128512</h1>
+  <h1>Tree-Do List </h1>
   <div class = "form">
 
 
@@ -38,31 +39,32 @@
 <form method="POST" class = "login-form" action="/logister">
   <div class = "credentials">
      <p>Username:</p>
-     <textarea class = "username" name="username" required placeholder="Enter username"></textarea>
-  </div>
-  <div class = "credentials">
+     <input class = "username" name="username" required placeholder="Enter username"></input>
      <p>Password:</p>
-     <input type="password" class = "password" required  name="password" placeholder="Enter password"></input>
-     <input type = "submit" class="input-btn" value ="log in"/>
+     <input type="password" class = "password" required  name="password" placeholder="Enter password"></div>
+     <button type = "submit" class="input-btn" ><i class="fas fa-sign-in-alt"></i> </button>
+  </div>
+
 
   </form>
 </div>
 
 <form method="POST" action="/register">
-  <h2>Dont have an account? Register here</h2>
+  <h2 class="register-line">Dont have an account? Click on the tent to register!</h2>
   <div class = "register-form">
   <p>Username:</p>
-  <textarea class = "username" name="username" required placeholder="Enter username"></textarea>
-  <p>Password:</p>
-  <input type="password" class = "password"  name="password" required placeholder="Enter password"></input>
+  <input class = "username" name="username" required placeholder="Create username"></input>
+  <p id ="pwfkup">Password:</p>
+  <input type="password" class = "password"  name="password" required placeholder="Create password"></input>
+  <button type = "submit" class="input-btn register-form" ><i class="fas fa-sign-in-alt"></i></button>
    </div>
-  <input type = "submit" class="input-btn register-form" value ="Register"/>
+
 </form>
 
-<input id = "show-register-btn" class="input-btn" type = "submit" value ="Register"/>
+<button id = "show-register-btn" class="input-btn" type = "submit" ><i class="fas fa-campground"></i></button>
 </div>
 <h2 class ="register-form">Got an account? Login here</h2>
-<input id = "show-login-btn" class="input-btn" type = "submit" value ="log in"/>
+<button id = "show-login-btn" class="input-btn" type = "submit" ><i class="fas fa-campground"></i></button>
 
 </body>
 

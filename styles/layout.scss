@@ -8,8 +8,7 @@ body{
 
 nav {
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  flex-direction:column;
   height: 150px;
   width: 100%;
   background-color: lightslategray;
@@ -21,6 +20,7 @@ nav {
   display: flex;
   width: 100%;
   justify-content: space-around;
+  padding-top: 25px;
 }
 
 .appName {
@@ -66,6 +66,7 @@ nav {
 
 .dropdown:hover .button {
   background-color: rgba(255, 0, 0, 0.411);
+  cursor: pointer;
 }
 
 .content {
@@ -142,5 +143,54 @@ nav {
 #edit-profile {
   background-color: transparent;
   border: none;
+}
 
+.userInt {
+  display: flex;
+  justify-content: row;
+  align-self: center;
+}
+
+.logout {
+  background-color: inherit;
+  border: none;
+}
+
+
+
+.fa-sign-out-alt {
+  font-size: 37px;
+}
+
+.fa-sign-out-alt:hover {
+  cursor: pointer;
+}
+
+.fa-user-edit:hover {
+  cursor: pointer;
+}
+
+.LOGO-btn{
+  background-color: transparent;
+  border: none;
+}
+
+.LOGO {
+  display: flex;
+  justify-content: space-around;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -35vh;
+  margin-left: -40vh;
+}
+
+img {
+  height:80vh;
+  z-index:-1;
+}
+
+.profile-view {
+  margin-left: 2em;
+  margin-top: 1em;
 }

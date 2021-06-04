@@ -2,10 +2,16 @@ const bcrypt = require("bcrypt");
 const cookieSession = require("cookie-session");
 module.exports = (db) => {
   //--------------------------------------------------------------
-  const getUsers = () => {
+  const getUsers = (id) => {
+
+    const stringQuery = `
+    SELECT username FROM users
+    WHERE id = $1
+    `;
+
     return db
-      .query(`SELECT * FROM users;`)
-      .then((data) => data.rows)
+      .query(stringQuery, [id])
+      .then((data) => data.rows[0])
   };
 
   //--------------------------------------------------------------

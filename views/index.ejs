@@ -33,25 +33,25 @@
   <!-- Top nav bar -->
   <nav>
 
-    <div class="logo toggle">
-      <button type="button">LOGO HERE</button>
-    </div>
+
 
     <div class="input-group">
-      <span class="appName">WADDAYAWANNADO?</span>
+      <span class="users"></span>
       <div class="textSubmit">
         <textarea class="form-control userText" aria-label="With textarea"
           placeholder="What do you wanna do?"></textarea>
         <button type="button" id="input"><i class="fas fa-clipboard-check icon"></i></button>
       </div>
-      <button class= "show-profile-btn" id = "edit-profile"type = "submit" ><i class="fas fa-user-edit"></i> </button>
-      <form method="POST" action="/logout">
-        <input type = "submit" value ="Logout"/>
+      <div class="userInt">
+        <button class= "show-profile-btn" id = "edit-profile"type = "submit" ><i class="fas fa-user-edit icon"></i> </button>
+        <form method="POST" action="/logout">
+        <button type="submit" class="logout"><i class="fas fa-sign-out-alt icon"></i></button>
+      </div>
       </form>
+
     </div>
 
     </div>
-<!--     -->
 
     <div class="listIcons">
       <div class="dropdown">
@@ -82,19 +82,6 @@
 
   </nav>
 
-
-
-  <!-- Page-specific (main) content here -->
-  <div class="lists">
-    <div class="users"></div>
-
-  </div>
-
-  <div class ="profile-form">
-
-  </div>
-
-
   <form method="POST" class="submit-profile" action="/profile">
     <div class="profile-view">
       <h2>Profile</h2>
@@ -109,6 +96,12 @@
       <input type = "submit" class="input-btn profile-form" value ="Save"/>
     </div>
   </form>
+
+<div class="LOGO">
+
+  <img src="images/LOGO.png">
+
+</div>
 
 </body>
 

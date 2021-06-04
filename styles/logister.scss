@@ -1,10 +1,14 @@
 body {
-  background-color: rgb(124, 124, 209);
+
   display:flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  font-family: 'Limelight', cursive;
+  font-family: 'Barlow', sans-serif;
+  background-image: url(/images/background.jpg) ;
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
 }
 
 .form {
@@ -12,23 +16,22 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
 }
 .input-btn {
   width: 6em;
   height: 3em;
-  background-color:hotpink;
+  background-color:transparent;
   border-radius: 50%;
   border:0;
 }
 .input-btn:hover{
-  box-shadow: 3px 3px;
+  cursor: pointer;
 }
 
 textarea {
   resize: none;
   margin: 0.5em 0.5em;
-
-
 }
 .credentials {
 
@@ -39,10 +42,58 @@ textarea {
 
 h1{
   font-size: 5em;
-  margin-top: 5%;
+  position: absolute;
+  margin-bottom:30%
 }
 
 p {
-  margin: 0.5em 0.5em
+  margin: 0.5em 0.5em;
+  font-size:1.5em;
+  font-weight: bold;
 }
 
+.fa-sign-in-alt {
+  color: rgba(255, 255, 255, 0.822);
+  font-size:40px;
+}
+
+.fa-campground{
+  color: rgba(255, 255, 255, 0.829);
+  font-size:40px
+}
+
+h2{
+  color:white;
+}
+
+.username {
+  height:2.5em;
+  resize: none;
+  background-color: rgba(255, 255, 255, 0.6);
+    width: 12em;
+    border: none;
+    border-bottom: 3px rgba(0, 0, 0, 0.397) solid;
+    opacity: 1;
+}
+
+.username:focus{
+  outline: none;
+}
+
+.password {
+  height:2.5em;
+  resize: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    width: 12em;
+    border: none;
+    border-bottom: 3px rgba(0, 0, 0, 0.397) solid;
+    opacity: 1;
+}
+
+.password:focus{
+  outline: none;
+}
+
+#pwfkup {
+  height:15px
+}
