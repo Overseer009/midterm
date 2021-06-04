@@ -12,7 +12,7 @@ nav {
   height: 150px;
   width: 100%;
   background-color: lightslategray;
-  opacity: 0.7;
+  opacity: 0.8;
 
 }
 
@@ -40,7 +40,7 @@ nav {
 
 .icon {
   font-size: 30px;
-  opacity: 1;
+  opacity: .8;
   color: white;
 }
 
@@ -193,4 +193,33 @@ img {
 .profile-view {
   margin-left: 2em;
   margin-top: 1em;
+}
+
+h3{
+  font-size: 3em;
+  margin: 0%;
+}
+
+p {
+  font-size: 2em;
+}
+
+.profile-username, .profile-email, .profile-bio {
+  height:2.5em;
+  resize: none;
+  background-color: rgba(255, 255, 255, 0.6);
+    width: 12em;
+    border: none;
+    border-bottom: 3px rgba(0, 0, 0, 0.397) solid;
+    opacity: .8;
+}
+
+.profile-form{
+  padding:0.5em 0.5em;
+  background-color: transparent;
+  border: none;
+}
+.fa-save{
+cursor: pointer;
+
 }
