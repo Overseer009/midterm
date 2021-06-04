@@ -4,6 +4,7 @@ body{
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 100vh;
+  font-family: 'Barlow', sans-serif;
 }
 
 nav {
@@ -65,7 +66,7 @@ nav {
 }
 
 .dropdown:hover .button {
-  background-color: rgba(255, 0, 0, 0.411);
+  background-color: rgba(0, 225, 255, 0.411);
   cursor: pointer;
 }
 
@@ -85,8 +86,9 @@ nav {
   display: flex;
   text-align: left;
   justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-
+  padding-bottom: 2px;
 }
 
 .content a:hover {
@@ -198,10 +200,12 @@ img {
 h3{
   font-size: 3em;
   margin: 0%;
+  color: rgba(255, 255, 255, 0.822);
 }
 
 p {
   font-size: 2em;
+  color: rgba(255, 255, 255, 0.822);
 }
 
 .profile-username, .profile-email, .profile-bio {
@@ -212,12 +216,14 @@ p {
     border: none;
     border-bottom: 3px rgba(0, 0, 0, 0.397) solid;
     opacity: .8;
+    outline: none;
 }
 
 .profile-form{
   padding:0.5em 0.5em;
   background-color: transparent;
   border: none;
+  color: rgba(255, 255, 255, 0.822);
 }
 .fa-save{
 cursor: pointer;
