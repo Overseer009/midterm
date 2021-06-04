@@ -482,9 +482,6 @@ const mainFetcher = (search, object) => {
   let capSearch = search.split(" ").map((words => words.charAt(0).toUpperCase() + words.slice(1)))
   capSearch = capSearch.join(" ")
   for (let choice of listArray) {
-    if (choice[1] === capSearch) {
-      return choice.join(",").replace(/\s/g, '+')
-    }
     if (choice[1] !== undefined) {
       const capChoice = choice[1].split(" ").map((words => words.charAt(0).toUpperCase() + words.slice(1)))
       if (capChoice.join(" ") !== capSearch) {
